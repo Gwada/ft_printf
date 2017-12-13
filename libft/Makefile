@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2017/12/13 16:36:02 by dlavaury          #+#    #+#              #
+#    Updated: 2017/12/13 16:36:46 by dlavaury         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 GCC = gcc
 
 CFLAGS = -Wall -Wextra -Werror -I ./Includes/
@@ -121,11 +133,9 @@ $(NAME): $(OBJ)
 clean:
 	@rm -f $(OBJ)
 	@rm -f libft.h.gch
-#	@echo "$(_YELLOW)clean$(_END)	: $(_GREEN)done$(_END)"
 
 fclean:	clean
 	@rm -f $(NAME)
-#	@echo "$(_YELLOW)fclean$(_END)	: $(_GREEN)done$(_END)"
 
 re: fclean all
 

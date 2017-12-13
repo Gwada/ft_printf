@@ -16,7 +16,6 @@ int				ft_printf(const char *format, ...)
 	va_start(data.ap, format);
 	while (*data.form)
 	{
-
 		if (*data.form == '%')
 		{
 			write(data.fd, data.form - data.i, data.i);
@@ -42,10 +41,10 @@ int				ft_dprintf(int fd, const char *format, ...)
 	va_start(data.ap, format);
 	while (*data.form)
 	{
-
 		if (*data.form == '%')
 		{
-			write(data.fd, data.form - data.i, data.i);
+			if (data.i)
+				write(data.fd, data.form - data.i, data.i);
 			data.i = -1;
 			ft_attribuate(&data);
 		}

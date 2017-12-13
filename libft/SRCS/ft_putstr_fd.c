@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 16:49:32 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/11/06 16:49:34 by dlavaury         ###   ########.fr       */
+/*   Updated: 2017/12/13 15:54:27 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	ft_putstr_fd(char const *s, int fd)
 {
-	!s ? write(fd, "(null)", 6) : write (fd, s, ft_strlen(s));
+	!s ? write(fd, "(null)", 6) : write(fd, s, ft_strlen(s));
 }

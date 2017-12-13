@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 16:12:40 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/11/09 14:59:26 by dlavaury         ###   ########.fr       */
+/*   Updated: 2017/12/13 15:58:48 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ typedef	struct		s_fd
 	int				nl;
 	int				ret;
 	char			buf[BUFF_SIZE + 1];
-	struct	s_fd	*previous;
-	struct	s_fd	*next;
+	struct s_fd		*previous;
+	struct s_fd		*next;
 }					t_fd;
 
 /*

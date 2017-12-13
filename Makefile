@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2017/12/13 16:12:24 by dlavaury          #+#    #+#              #
+#    Updated: 2017/12/13 16:41:26 by dlavaury         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = libftprintf.a
 
 CC = gcc
@@ -41,7 +53,7 @@ $(NAME): $(OBJ)
 	@cp libft/libft.a ./$(NAME)
 	@ar rc $(NAME) $(OBJ) $?
 	@ranlib $(NAME)
-	@echo "\n$(NAME) edited"
+	@echo "\n$(_CYAN)$(NAME)$(_END) $(_GREEN)edited$(_END)"
 
 $(DIR_O)/%.o: $(DIR_C)/%.c
 	@mkdir -p temp
@@ -52,17 +64,20 @@ clean:
 	@make -C ./libft/ clean
 	@rm -f $(OBJ)
 	@rm -rf $(DIR_O)
-	@echo "clean	: done"
+	@echo "$(_RED)clean$(_END)	: $(_GREEN)done$(_END)"
 
 fclean:	clean
 	@make -C ./libft/ fclean
 	@rm -f $(NAME)
-	@echo "fclean	: done"
+	@echo "$(_RED)fclean$(_END)	: $(_GREEN)done$(_END)"
 
 re: fclean all
 
 go: all
 	@gcc -o ft_printf main.c $(NAME)
 	@time ./ft_printf
+
+norminette:
+	norminette
 
 .PHONY: all re fclean clean
