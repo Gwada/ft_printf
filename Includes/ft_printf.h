@@ -44,5 +44,7 @@ typedef struct	s_data
 int				ft_printf(const char *format, ...);
 int				ft_dprintf(int fd, const char *format, ...);
 void			ft_attribuate(t_data *data);
+void			ft_put_type(t_data *data);
+void			ft_putstr_printf(t_data *data);
 
 # endif

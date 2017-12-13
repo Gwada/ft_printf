@@ -23,7 +23,9 @@ DIR_O = temp
 HEADER = -I Includes
 
 SOURCES =	ft_printf.c \
-			ft_attribuate.c
+			ft_attribuate.c \
+			ft_put_type.c \
+			ft_putstr_printf.c
 
 SRCS = $(addprefix ./SRCS/,$(SRC:.c=.o))
 
