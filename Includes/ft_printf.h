@@ -30,6 +30,7 @@ typedef struct	s_data
 */
 
 int				ft_printf(const char *format, ...);
+int				ft_dprintf(int fd, const char *format, ...);
 void			ft_attribuate(t_data *data);
 
 # endif
