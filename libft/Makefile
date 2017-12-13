@@ -112,7 +112,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@ar rc $(NAME) $?
 	@ranlib $(NAME)
-	@echo "\n$(_GREEN)$(NAME) edited$(_END)"
+	@echo "\n$(NAME) edited"
 
 %.o: %.c
 	@printf "%-60b\r" "$(ECHO) Compressing $@"
@@ -121,11 +121,11 @@ $(NAME): $(OBJ)
 clean:
 	@rm -f $(OBJ)
 	@rm -f libft.h.gch
-	@echo "$(_YELLOW)clean$(_END)	: $(_GREEN)done$(_END)"
+#	@echo "$(_YELLOW)clean$(_END)	: $(_GREEN)done$(_END)"
 
 fclean:	clean
 	@rm -f $(NAME)
-	@echo "$(_YELLOW)fclean$(_END)	: $(_GREEN)done$(_END)"
+#	@echo "$(_YELLOW)fclean$(_END)	: $(_GREEN)done$(_END)"
 
 re: fclean all
 
