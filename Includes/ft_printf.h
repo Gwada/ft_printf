@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 15:53:27 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/12/13 20:56:55 by dlavaury         ###   ########.fr       */
+/*   Updated: 2017/12/14 20:48:24 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_PRINTF_H
 
 /*
-**							*** LIBRAIRIES ***
+**	*** LIBRAIRIES ***
 */
 
 # include "../libft/Includes/libft.h"
@@ -22,7 +22,10 @@
 # include <stdio.h>
 
 /*
-**							*** STRUCTURES ***
+**	*** MACCROS ***
+*/
+/*
+**	*** STRUCTURES ***
 */
 
 typedef struct	s_data
@@ -33,12 +36,14 @@ typedef struct	s_data
 	int			i_form;
 	char		*s;
 	char		*form;
+	int			i_b;
+	char		buf[BUFF_SIZE];
 	va_list		ap;
 
 }				t_data;
 
 /*
-**							*** PROTOTYPES ***
+**	*** PROTOTYPES ***
 */
 
 int				ft_printf(const char *format, ...);
@@ -46,5 +51,7 @@ int				ft_dprintf(int fd, const char *format, ...);
 void			ft_attribuate(t_data *data);
 void			ft_put_type(t_data *data);
 void			ft_putstr_printf(t_data *data);
+void			ft_putbin(t_data *data);
+void			ft_buffering(t_data *data, const char *s, int len);
 
 # endif

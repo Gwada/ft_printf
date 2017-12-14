@@ -14,7 +14,7 @@ int		main (int argc, char **argv)
 	printf("/* ft_printf */\n");
 	printf("/*************/\n");
 
-	printf("ret = %d\n\n\n\n", ft_printf("Bonjour %s, comment vas-tu%s?\n", "Dimitri", " aujourd'hui"));
+	printf("ret = %d\n\n\n\n", ft_printf("Bonjour %s, comment vas-tu%s?\n%b\n", "Dimitri", " aujourd'hui", "c6"));
 
 /*void	put_binary(void *c)
 {

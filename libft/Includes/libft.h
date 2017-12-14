@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 16:12:40 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/12/13 15:58:48 by dlavaury         ###   ########.fr       */
+/*   Updated: 2017/12/14 19:02:34 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 **	MACCROS
 */
 
-# define BUFF_SIZE 50
+# define BUFF_SIZE 255
 
 /*
 **	STRUCTURES

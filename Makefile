@@ -6,7 +6,7 @@
 #    By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/13 16:12:24 by dlavaury          #+#    #+#              #
-#    Updated: 2017/12/13 16:41:26 by dlavaury         ###   ########.fr        #
+#    Updated: 2017/12/14 20:48:28 by dlavaury         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,17 +25,19 @@ HEADER = -I Includes
 SOURCES =	ft_printf.c \
 			ft_attribuate.c \
 			ft_put_type.c \
-			ft_putstr_printf.c
+			ft_putstr_printf.c \
+			ft_putbin.c \
+			ft_buffering.c
 
-SRCS = $(addprefix ./SRCS/,$(SRC:.c=.o))
+SRCS = $(addprefix ./SRCS/,$(SOURCES))
 
 OBJ = $(addprefix $(DIR_O)/,$(SOURCES:.c=.o))
 
 # PROGRESS BAR
-T = $(words $(addprefix ./SRCS/,$(SRC)))
+T = $(words $($(SRCS)))
 N = 0
 C = $(words $N)$(eval N := x $N)
-ECHO = "[`expr $C '*' 100 / $T`%]"
+@ECHO = "[`expr $C '*' 100 / $T`%]"
 
 #Color
 _GREY=\x1b[30m
@@ -63,23 +65,27 @@ $(DIR_O)/%.o: $(DIR_C)/%.c
 	@$(CC) $(HEADER) -o $@ -c $<
 
 clean:
-	@make -C ./libft/ clean
+	@make -C libft clean
 	@rm -f $(OBJ)
 	@rm -rf $(DIR_O)
 	@echo "$(_RED)clean$(_END)	: $(_GREEN)done$(_END)"
 
-fclean:	clean
-	@make -C ./libft/ fclean
+fclean:
+	@make clean
+	@make -C libft fclean
 	@rm -f $(NAME)
 	@echo "$(_RED)fclean$(_END)	: $(_GREEN)done$(_END)"
 
-re: fclean all
+re:
+	@make fclean
+	@make all
 
-go: all
+go:
+	@make -j3
 	@gcc -o ft_printf main.c $(NAME)
 	@time ./ft_printf
 
 norminette:
-	norminette
+	@norminette
 
 .PHONY: all re fclean clean

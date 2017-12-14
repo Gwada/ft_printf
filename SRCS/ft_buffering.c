@@ -1,18 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_buffering.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/06 16:49:32 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/12/14 20:10:20 by dlavaury         ###   ########.fr       */
+/*   Created: 2017/12/14 18:44:57 by dlavaury          #+#    #+#             */
+/*   Updated: 2017/12/14 20:48:20 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putstr_fd(char const *s, int fd)
+void	ft_buffering(t_data *data, const char *s, int len)
 {
-	!s ? write(fd, "(null)", 6) : write(fd, s, ft_strlen(s));
+	int		i;
+
+	i = -1;
+	while (++i - len)
+	{
+		if (data->i_b == BUFF_SIZE - 1)
+		{
+			write(data->fd, data->buf, BUFF_SIZE - 1);
+			ft_bzero(data->buf, BUFF_SIZE);
+			data->i_b = 0;
+		}
+		data->buf[data->i_b++] = s[i];
+		data->len++;
+	}
 }

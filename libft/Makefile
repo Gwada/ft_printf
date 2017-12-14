@@ -6,7 +6,7 @@
 #    By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/13 16:36:02 by dlavaury          #+#    #+#              #
-#    Updated: 2017/12/13 16:36:46 by dlavaury         ###   ########.fr        #
+#    Updated: 2017/12/14 18:13:13 by dlavaury         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -124,7 +124,6 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@ar rc $(NAME) $?
 	@ranlib $(NAME)
-	@echo "\n$(NAME) edited"
 
 %.o: %.c
 	@printf "%-60b\r" "$(ECHO) Compressing $@"
