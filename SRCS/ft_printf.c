@@ -34,8 +34,13 @@ int				ft_printf(const char *format, ...)
 			data.i = -1;
 			ft_attribuate(&data);
 		}
-		++data.i;
-		++data.form;
+		if (++data.i == BUFF_SIZE)
+		{
+			ft_buffering(&data, data.form - data.i, data.i);
+			data.i == 0;
+		}
+		if (!*(++data.form))
+			ft_buffering(&data, data.form - data.i, data.i);
 	}
 	write(data.fd, data.buf, ft_strlen(data.buf));
 	va_end(data.ap);
