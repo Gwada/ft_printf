@@ -19,9 +19,9 @@ void	ft_buffering(t_data *data, const char *s, int len)
 	i = -1;
 	while (++i - len)
 	{
-		if (data->i_b == BUFF_SIZE - 1)
+		if (data->i_b == BUFF_SIZE)
 		{
-			write(data->fd, data->buf, BUFF_SIZE - 1);
+			write(data->fd, data->buf, BUFF_SIZE);
 			ft_bzero(data->buf, BUFF_SIZE);
 			data->i_b = 0;
 		}
