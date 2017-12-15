@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:23:00 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/12/14 20:48:08 by dlavaury         ###   ########.fr       */
+/*   Updated: 2017/12/15 18:58:14 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,13 @@ int				ft_printf(const char *format, ...)
 			data.i = -1;
 			ft_attribuate(&data);
 		}
-		if (++data.i == BUFF_SIZE)
+		else if (*data.form++ && ++data.i == BUFF_SIZE)
 		{
-			ft_buffering(&data, data.form - data.i, data.i);
-			data.i == 0;
+			ft_buffering(&data, data.form - data.i, BUFF_SIZE);
+			data.i = 0;
 		}
-		if (!*(++data.form))
-			ft_buffering(&data, data.form - data.i, data.i);
 	}
+	ft_buffering(&data, data.form - data.i, data.i);
 	write(data.fd, data.buf, ft_strlen(data.buf));
 	va_end(data.ap);
 	return (data.len);
