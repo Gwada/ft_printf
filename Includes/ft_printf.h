@@ -37,7 +37,7 @@ typedef struct	s_data
 	char		*s;
 	char		*form;
 	int			i_b;
-	char		buf[BUFF_SIZE];
+	char		buf[BUFF_SIZE + 1];
 	va_list		ap;
 
 }				t_data;
