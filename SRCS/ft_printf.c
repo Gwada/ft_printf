@@ -32,7 +32,6 @@ int				ft_printf(const char *format, ...)
 		{
 			ft_buffering(&data, data.form - data.i, data.i);
 			data.i = -1;
-			//ft_putstr("||");//
 			ft_attribuate(&data);
 		}
 		++data.i;
