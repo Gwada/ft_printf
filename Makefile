@@ -6,7 +6,7 @@
 #    By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/13 16:12:24 by dlavaury          #+#    #+#              #
-#    Updated: 2017/12/16 20:13:27 by dlavaury         ###   ########.fr        #
+#    Updated: 2017/12/16 20:24:18 by dlavaury         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SOURCES =	ft_printf.c \
 			ft_len_mod_parser.c \
 			ft_put_type.c \
 			ft_putstr_printf.c \
+			ft_wstrlen.c \
 			ft_putbin.c \
 			ft_buffering.c
 
@@ -77,8 +78,7 @@ clean:
 	@rm -rf $(DIR_O)
 	@echo "$(_RED)clean$(_END)	: $(_GREEN)done$(_END)"
 
-fclean:
-	@make clean
+fclean: clean
 	@make -C libft fclean
 	@rm -f $(NAME)
 	@echo "$(_RED)fclean$(_END)	: $(_GREEN)done$(_END)"

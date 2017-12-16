@@ -18,6 +18,15 @@ int		main (void)
 	printf("/*************/\n");
 
 	ft_printf("res = |test%s|\n", s);
+	return (0);
+}
+
+
+
+
+
+
+
 /*void	put_binary(unsigned c)
 {
 	unsigned mask = ~(~0U >> 1);
@@ -45,6 +54,6 @@ int		main(void)
 	{
 		printf("(f = %d) |= (1 << (p->n = %d))\n", f, i);
 		put_binary((f |= (1 << i--)));
-	}*/
+	}
 	return (0);
-}
+}*/
