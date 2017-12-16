@@ -15,8 +15,11 @@
 void	ft_put_type(t_data *data)
 {
 	ft_putstr("|in put type -> ");//
-	if (*data->ft == 's' || *data->ft == 'S')
-		ft_putstr_printf(data);
+	if (*data->ft == 's')
+		data->B_D & LONG || data->B_D & LONGX2 ?
+		ft_putwstr_p(data) : ft_putstr_p(data);
+	else if (*data->ft == 'c' || *data->ft == 'C')
+		ft_putchar_p(data->ap, unsigned);
 	else if (*data->ft == 'n')
 		*va_arg(data->ap, long long unsigned *) = data->len;//
 	else if (*data->ft == 'b')

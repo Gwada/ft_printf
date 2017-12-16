@@ -33,7 +33,6 @@ SOURCES =	ft_printf.c \
 			ft_len_mod_parser.c \
 			ft_put_type.c \
 			ft_putstr_printf.c \
-			ft_wstrlen.c \
 			ft_putbin.c \
 			ft_buffering.c
 
@@ -88,7 +87,7 @@ re: fclean
 
 go:
 	@make -j4
-	@gcc -Wall -Wextra -Werror -o ft_printf main.c $(NAME)
+	@gcc -o ft_printf main.c $(NAME)
 	@time ./ft_printf
 
 norminette:

@@ -140,5 +140,7 @@ char				*ft_strupcase(char *str);
 void				ft_swap(int *a, int *b);
 int					get_next_line(const int fd, char **line);
 int					ft_strchri(const char *s, unsigned c);
+size_t				ft_wstrlen(unsigned *s);
+size_t				ft_wcharlen(unsigned c);
 
 #endif

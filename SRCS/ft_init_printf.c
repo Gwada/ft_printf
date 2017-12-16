@@ -14,9 +14,7 @@
 
 void	ft_init_printf(t_data *data, const char *s, int fd)
 {
-	printf("->in init printf | ");//
 	ft_bzero(data, sizeof(*data));
 	data->ft = (char*)s;
 	data->fd = fd;
-	printf("out init printf<-\n");//
 }

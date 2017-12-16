@@ -84,7 +84,6 @@ void				ft_len_mod_parser(t_data *data);
 void				ft_put_type(t_data *data);
 void				ft_putchar_printf(t_data *data);
 void				ft_putstr_printf(t_data *data);
-size_t				ft_wstrlen(const wchar_t *s);
 void				ft_putbin(t_data *data);
 void				ft_buffering(t_data *data, const void *s, int len);
 

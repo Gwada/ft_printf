@@ -14,11 +14,17 @@
 
 void	ft_putstr_printf(t_data *data)
 {
-	ft_putstr("in putstr pri -> ");
+	ft_putstr("in putstr pri -> ");//
+	int		c_s;
+	int		len;
+	wchar_t	*s;
+
 	if (!(data->s = (wchar_t*)va_arg(data->ap, wchar_t*)))
-		ft_buffering(data, "(null)", 6);
-	else
-		ft_buffering(data, data->s, ft_wstrlen(data->s));
-	ft_putstr("end putstr pri -> ");
+		return (ft_buffering(data, "(null)", 6));
+	len = (int)ft_wstrlen((unsigned*)s);
+	ft_putstr("->wlen = ");
+	ft_putnbr(len);
+	ft_putstr("<-\n");
+	ft_putstr("end putstr pri -> ");//
 
 }

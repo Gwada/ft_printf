@@ -14,9 +14,10 @@
 
 void	ft_buffering(t_data *data, const void *s, int len)
 {
+	ft_putstr("in buff -> ");//
 	int		i;
 	char	*src;
-	ft_putstr("in buff -> ");//
+
 	i = -1;
 	src = (char*)s;
 	while (++i - len)

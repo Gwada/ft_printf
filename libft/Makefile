@@ -99,7 +99,9 @@ SRC = ft_memset.c \
 		ft_strupcase.c \
 		ft_swap.c \
 		get_next_line.c \
-		ft_strchri.c
+		ft_strchri.c \
+		ft_wstrlen.c \
+		ft_wcharlen.c
 
 OBJ = $(addprefix ./SRCS/,$(SRC:.c=.o))
 
