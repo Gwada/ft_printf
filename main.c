@@ -2,24 +2,23 @@
 //# include <limits.h>
 # include "./Includes/ft_printf.h"
 
-//int		main (int argc, char **argv)
-//{
-	//char *s = "start aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa end\n";
+int		main (void)
+{
+	char *s = "start aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa end";
 	//char *s1 = "Dimitri";
 	//char *s2 = "today";
-	//printf("/**********/\n");
-	//printf("/* printf */\n");
-	//printf("/**********/\n");
+	printf("/**********/\n");
+	printf("/* printf */\n");
+	printf("/**********/\n");
 
-	//printf("ret = %d\n\n", printf(s));
-	//printf("ret = %d\n\n\n\n", printf("Bonjour %s, comment vas-tu %s?\n%c\n", s1, s2, "fdgf"));
+	printf("ret = %d\n\n\n\n", printf("res = |test%s|\n", s));
 
-	//printf("\n/*************/\n");
-	//printf("/* ft_printf */\n");
-	//printf("/*************/\n");
+	printf("\n/*************/\n");
+	printf("/* ft_printf */\n");
+	printf("/*************/\n");
 
-	//printf("ret = %d\n\n\n\n", ft_printf("Bonjour %s, comment vas-tu %s?\n%c\n", s1, s2, "fdgf"));
-void	put_binary(unsigned c)
+	ft_printf("res = |test%s|\n", s);
+/*void	put_binary(unsigned c)
 {
 	unsigned mask = ~(~0U >> 1);
 	unsigned i = 0;
@@ -46,17 +45,6 @@ int		main(void)
 	{
 		printf("(f = %d) |= (1 << (p->n = %d))\n", f, i);
 		put_binary((f |= (1 << i--)));
-	}/*
-	printf ("\n(f = %d) & 1 << 3\n", f);
-	put_binary(f & 1 << 3);
-	printf("\n!(f & 1 << 5))\n");
-	put_binary(f & 1 << 5);
-	printf("\nf &= ~1 << 4\n");
-	printf("\nif (f & 1 << 3 && !(f & ))\n");
-	(f & 1 << 3 && !(f & 1 << 5)) ? f &= ~(1 << 4) : 0;
-	put_binary(f);
-	printf("%i|", 5);*/
-	//f = 32 | = 1 << 15;
-	//put_binary(32 | (f & 1 << 4));
+	}*/
 	return (0);
 }

@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_attribuate.c                                    :+:      :+:    :+:   */
+/*   ft_init_printf.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/14 17:23:06 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/12/16 20:13:14 by dlavaury         ###   ########.fr       */
+/*   Created: 2017/12/16 11:22:51 by dlavaury          #+#    #+#             */
+/*   Updated: 2017/12/16 19:24:40 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_attribuate(t_data *data)
+void	ft_init_printf(t_data *data, const char *s, int fd)
 {
-	ft_putstr("c = %\nin attribuate ->");//
-	ft_attribuate_init(data);
-	if (!*++data->ft)
-	{
-		++data->i;
-		return ;
-	}
-	ft_flags_parser(data);//
-	ft_precision_parser(data);
-	ft_len_mod_parser(data);//
-	ft_flags_parser(data);
-	ft_put_type(data);
-	ft_putstr("<- end attribuate\n\n");//
+	//printf("in init printf\n");
+	ft_bzero(data, sizeof(*data));
+	data->ft = (char*)s;
+	data->fd = fd;
+	//printf("out init printf\n");
 }

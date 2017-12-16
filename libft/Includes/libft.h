@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 16:12:40 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/12/14 19:02:34 by dlavaury         ###   ########.fr       */
+/*   Updated: 2017/12/16 10:27:03 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 **	MACCROS
 */
 
-# define BUFF_SIZE 255
+# define BUFF_SIZE 512
 
 /*
 **	STRUCTURES
@@ -139,5 +139,6 @@ int					ft_str_is_lowercase(char *str);
 char				*ft_strupcase(char *str);
 void				ft_swap(int *a, int *b);
 int					get_next_line(const int fd, char **line);
+int					ft_strchri(const char *s, unsigned c);
 
 #endif

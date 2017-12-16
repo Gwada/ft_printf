@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_attribuate.c                                    :+:      :+:    :+:   */
+/*   ft_strchri.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/14 17:23:06 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/12/16 20:13:14 by dlavaury         ###   ########.fr       */
+/*   Created: 2017/12/16 10:19:17 by dlavaury          #+#    #+#             */
+/*   Updated: 2017/12/16 14:00:44 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void	ft_attribuate(t_data *data)
+int		ft_strchri(const char *s, unsigned c)
 {
-	ft_putstr("c = %\nin attribuate ->");//
-	ft_attribuate_init(data);
-	if (!*++data->ft)
-	{
-		++data->i;
-		return ;
-	}
-	ft_flags_parser(data);//
-	ft_precision_parser(data);
-	ft_len_mod_parser(data);//
-	ft_flags_parser(data);
-	ft_put_type(data);
-	ft_putstr("<- end attribuate\n\n");//
+    int i;
+
+    i = 0;
+	while (*s && *s != (char)c)
+    {
+        s++;
+		i++;
+    }
+	return (*s == (char)c ? i : -1);
 }

@@ -6,7 +6,7 @@
 #    By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/13 16:12:24 by dlavaury          #+#    #+#              #
-#    Updated: 2017/12/15 18:58:34 by dlavaury         ###   ########.fr        #
+#    Updated: 2017/12/16 20:13:27 by dlavaury         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,14 @@ DIR_O = temp
 HEADER = -I Includes
 
 SOURCES =	ft_printf.c \
+			ft_init_printf.c \
 			ft_attribuate.c \
+			ft_attribuate_init.c \
+			ft_flags_parser.c \
+			ft_find_flags.c \
+			ft_star_gestion.c \
+			ft_precision_parser.c \
+			ft_len_mod_parser.c \
 			ft_put_type.c \
 			ft_putstr_printf.c \
 			ft_putbin.c \
@@ -76,13 +83,12 @@ fclean:
 	@rm -f $(NAME)
 	@echo "$(_RED)fclean$(_END)	: $(_GREEN)done$(_END)"
 
-re:
-	@make fclean
+re: fclean
 	@make all
 
 go:
-	@make -j3
-	@gcc -o ft_printf main.c $(NAME)
+	@make -j4
+	@gcc -Wall -Wextra -Werror -o ft_printf main.c $(NAME)
 	@time ./ft_printf
 
 norminette:

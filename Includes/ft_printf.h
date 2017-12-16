@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 15:53:27 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/12/15 18:58:28 by dlavaury         ###   ########.fr       */
+/*   Updated: 2017/12/16 20:13:29 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,37 +24,67 @@
 /*
 **	*** MACCROS ***
 */
+
+# define DIESE		(1 << 0)
+# define SPACE		(1 << 1)
+# define POS		(1 << 2)
+# define NEG		(1 << 3)
+# define ZERO		(1 << 4)
+# define STAR		(1 << 5)
+# define MAJ		(1 << 6)
+# define SHORT		(1 << 7)
+# define SHORTX2	(1 << 8)
+# define LONG		(1 << 9)
+# define LONGX2		(1 << 10)
+# define INTMAX		(1 << 11)
+# define SIZE_T		(1 << 12)
+# define MIN_LEN	(1 << 13)
+# define PREC		(1 << 14)
+# define POINTEUR	(1 << 15)
+# define MAX(a, b)	b & ((a - b) >> 31) | a & (~(a - b) >> 31)
+# define MIN(a, b)	a & ((a - b) >> 31) | b & (~(a - b) >> 31)
+
 /*
 **	*** STRUCTURES ***
 */
 
-typedef struct	s_data
+typedef struct		s_data
 {
-	int			i;
-	int			fd;
-	int			len;
-	int			i_form;
-	int			car;
-	unsigned	B_D : 16;
-	char		*s;
-	char		*form;
-	int			i_b;
-	char		buf[BUFF_SIZE + 1];
-	va_list		ap;
+	int				i;
+	int				fd;
+	int				len;
+	int				i_form;
+	int				car;
+	int				prec;
+	int				min_s;
+	char			*s;
+	char			*ft;
+	int				i_b;
+	int				i_f;
+	char			buf[BUFF_SIZE + 1];
+	short			B_D;
+	va_list			ap;
 
-}				t_data;
+}					t_data;
 
 /*
 **	*** PROTOTYPES ***
 */
 
-int				ft_printf(const char *format, ...);
-int				ft_dprintf(int fd, const char *format, ...);
-void			ft_attribuate(t_data *data);
-void			ft_put_type(t_data *data);
-void			ft_putchar_printf(t_data *data);
-void			ft_putstr_printf(t_data *data);
-void			ft_putbin(t_data *data);
-void			ft_buffering(t_data *data, const void *s, int len);
+int					ft_printf(const char *format, ...);
+int					ft_dprintf(int fd, const char *format, ...);
+void				ft_init_printf(t_data *data, const char *s, int fd);
+void				ft_attribuate(t_data *data);
+void				ft_attribuate_init(t_data *data);
+void				ft_flags_parser(t_data *data);
+void				ft_find_flags(t_data *data);
+void				ft_star_gestion(t_data *data);
+void				ft_precision_parser(t_data *data);
+void				ft_len_mod_parser(t_data *data);
+void				ft_put_type(t_data *data);
+void				ft_putchar_printf(t_data *data);
+void				ft_putstr_printf(t_data *data);
+void				ft_putbin(t_data *data);
+void				ft_buffering(t_data *data, const void *s, int len);
 
 # endif

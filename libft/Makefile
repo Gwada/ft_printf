@@ -6,7 +6,7 @@
 #    By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/13 16:36:02 by dlavaury          #+#    #+#              #
-#    Updated: 2017/12/14 18:13:13 by dlavaury         ###   ########.fr        #
+#    Updated: 2017/12/16 10:25:35 by dlavaury         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,7 +98,8 @@ SRC = ft_memset.c \
 		ft_str_is_lowercase.c \
 		ft_strupcase.c \
 		ft_swap.c \
-		get_next_line.c
+		get_next_line.c \
+		ft_strchri.c
 
 OBJ = $(addprefix ./SRCS/,$(SRC:.c=.o))
 

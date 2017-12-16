@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_attribuate.c                                    :+:      :+:    :+:   */
+/*   ft_find_flags.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/14 17:23:06 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/12/16 20:13:14 by dlavaury         ###   ########.fr       */
+/*   Created: 2017/12/16 11:30:42 by dlavaury          #+#    #+#             */
+/*   Updated: 2017/12/16 19:36:23 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_attribuate(t_data *data)
+void	ft_find_flags(t_data *data)
 {
-	ft_putstr("c = %\nin attribuate ->");//
-	ft_attribuate_init(data);
-	if (!*++data->ft)
+	ft_putstr("in find flag -> ");
+	while (*data->ft && (data->i_f = ft_strchri("# +-0*", *data->ft)) >= 0)
 	{
-		++data->i;
-		return ;
+		data->B_D |= 1 << data->i_f;
+		++data->ft;
 	}
-	ft_flags_parser(data);//
-	ft_precision_parser(data);
-	ft_len_mod_parser(data);//
-	ft_flags_parser(data);
-	ft_put_type(data);
-	ft_putstr("<- end attribuate\n\n");//
+	ft_putstr("out find flag -> ");
 }
