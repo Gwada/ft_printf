@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/17 13:33:34 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/12/17 15:36:53 by dlavaury         ###   ########.fr       */
+/*   Updated: 2017/12/17 20:25:11 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,28 @@
 void	ft_set_string(t_data *data)
 {
 	ft_putstr("in set string -> ");//
-	if ((*data->ft == 's' && (data->B_D & LONG || data->B_D & LONGX2))
-		|| *data->ft == 'S')
+	if (data->B_D & PREC)
 	{
-		ft_putstr("|LONG ou S| -> ");
-		if (!(data->ws = va_arg(data->ap, wchar_t*)))
-			return (ft_buffering(data, "(null)", 6));
-		//return (ft_putwstr_p(data));//
+		if (data->B_D & ZERO)
+			while (data->min_s--)
+				ft_buffering(data, "0", 1);
+		else if (data->B_D & NEG)
+			while (data->min_s--)
+				ft_buffering(data, " ", 1);
 	}
-	ft_putstr("|s| -> ");
-	data->s = (char*)va_arg(data->ap, unsigned*);
-	ft_putstr_p(data);
+	else
+	{
+		if ((*data->ft == 's' && (data->B_D & LONG || data->B_D & LONGX2))
+		|| *data->ft == 'S')
+		{
+			ft_putstr("|LONG ou S| -> ");
+			//ft_putwstr_p(data);//
+		}
+		else
+		{
+			ft_putstr("|s| -> ");
+			ft_putstr_p(data);
+		}
+	}
 	ft_putstr("end set string -> ");//
 }

@@ -1,32 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_attribuate.c                                    :+:      :+:    :+:   */
+/*   ft_no_types.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/14 17:23:06 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/12/17 20:25:01 by dlavaury         ###   ########.fr       */
+/*   Created: 2017/12/17 20:12:25 by dlavaury          #+#    #+#             */
+/*   Updated: 2017/12/17 20:25:08 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_attribuate(t_data *data)
+void	ft_no_types(t_data *data)
 {
-	ft_putstr("c = %\n|in attribuate ->\n");//
-	ft_attribuate_init(data);
-	if (!*++data->ft)
-	{
-		++data->i;
-		return ;
-	}
-	ft_flags_parser(data);//
-	ft_precision_parser(data);
-	ft_len_mod_parser(data);//
-	ft_flags_parser(data);
-	if (data->B_D & PREC)
-		ft_precision_parser(data);
-	ft_put_type(data);
-	ft_putstr("<- end attribuate\n\n");//
+	printf("in no types\nmin_s = %d\n", data->min_s);
+	ft_putstr("<- end no types ");
 }

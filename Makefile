@@ -6,7 +6,7 @@
 #    By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/13 16:12:24 by dlavaury          #+#    #+#              #
-#    Updated: 2017/12/17 15:36:43 by dlavaury         ###   ########.fr        #
+#    Updated: 2017/12/17 20:24:54 by dlavaury         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SOURCES =	ft_printf.c \
 			ft_set_string.c \
 			ft_putstr_p.c \
 			ft_putbin.c \
+			ft_no_types.c \
 			ft_buffering.c
 
 SRCS = $(addprefix ./SRCS/,$(SOURCES))

@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 11:30:42 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/12/16 19:36:23 by dlavaury         ###   ########.fr       */
+/*   Updated: 2017/12/17 17:38:07 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 void	ft_find_flags(t_data *data)
 {
-	ft_putstr("in find flag -> ");
-	while (*data->ft && (data->i_f = ft_strchri("# +-0*", *data->ft)) >= 0)
+	while ((data->i_f = ft_strchri("# +-0*", *data->ft)) >= 0 && *++data->ft)
 	{
+		ft_putstr("c = |");//
+		ft_putchar(*(data->ft - 1));//
+		ft_putstr("|\n");//
 		data->B_D |= 1 << data->i_f;
-		++data->ft;
+		//++data->ft;
 	}
-	ft_putstr("out find flag -> ");
+	ft_putstr("<- out find flag\n");//
 }
