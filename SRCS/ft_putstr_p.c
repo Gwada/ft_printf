@@ -15,6 +15,7 @@
 void	ft_putstr_p(t_data *data)
 {
 	int		len;
+
 	ft_putstr("in putstr -> ");//
 	if (!(data->s = (char*)va_arg(data->ap, unsigned*)))
 	//if (data->B_D & PREC)

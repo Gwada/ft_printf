@@ -14,6 +14,9 @@
 
 void	ft_set_string(t_data *data)
 {
+	char c;
+
+	c = *data->ft;
 	ft_putstr("in set string -> ");//
 	if (data->B_D & PREC)
 	{
@@ -23,20 +26,17 @@ void	ft_set_string(t_data *data)
 		else if (data->B_D & NEG)
 			while (data->min_s--)
 				ft_buffering(data, " ", 1);
+		return ;
+	}
+	if (c == 'S' || (data->B_D & LONG || data->B_D & LONGX2))
+	{
+		ft_putstr("|LONG ou S| -> ");
+		//ft_putwstr_p(data);//
 	}
 	else
 	{
-		if ((*data->ft == 's' && (data->B_D & LONG || data->B_D & LONGX2))
-		|| *data->ft == 'S')
-		{
-			ft_putstr("|LONG ou S| -> ");
-			//ft_putwstr_p(data);//
-		}
-		else
-		{
-			ft_putstr("|s| -> ");
-			ft_putstr_p(data);
-		}
+		ft_putstr("|s| -> ");
+		ft_putstr_p(data);
 	}
 	ft_putstr("end set string -> ");//
 }

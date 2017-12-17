@@ -13,15 +13,16 @@
 #include "ft_printf.h"
 
 void	ft_put_type(t_data *data)
-{
-	char c = *data->ft;//
+{//
 	printf("|in put type c = ->%c<-\n", c);//
-	if (*data->ft == 's' || *data->ft == 'S')
+	if (ft_strchr("sS", *data->ft))
 		ft_set_string(data);
-	/*else if (*data->ft == 'c' || *data->ft == 'C')
-		ft_putchar_p(data->ap, unsigned);
-	else if (*data->ft == 'n')
-		*va_arg(data->ap, long long unsigned *) = data->len;//
+	/*else if (ft_strchr("cC", *data->ft)
+		ft_set_car(data);
+	else if (ft_strchr("dDi", *data->ft))
+		ft_set_integer(data);
+	else if (ft_strchr("fF", *data->ft)
+		ft_set_double(data);
 	else if (*data->ft == 'b')
 		ft_putbin(data);*/
 	else
