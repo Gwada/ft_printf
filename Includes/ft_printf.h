@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 15:53:27 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/12/16 20:24:23 by dlavaury         ###   ########.fr       */
+/*   Updated: 2017/12/17 15:36:40 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,17 @@ typedef struct		s_data
 	int				fd;
 	int				len;
 	int				i_form;
-	int				car;
 	int				prec;
 	int				min_s;
-	wchar_t			*s;
-	char			*ft;
 	int				i_b;
 	int				i_f;
+	char			*ft;
+	char			*s;
 	char			buf[BUFF_SIZE + 1];
 	short			B_D;
+	wchar_t			*ws;
 	va_list			ap;
+	unsigned		car;
 
 }					t_data;
 
@@ -82,8 +83,10 @@ void				ft_star_gestion(t_data *data);
 void				ft_precision_parser(t_data *data);
 void				ft_len_mod_parser(t_data *data);
 void				ft_put_type(t_data *data);
-void				ft_putchar_printf(t_data *data);
-void				ft_putstr_printf(t_data *data);
+//void				ft_putchar_printf(t_data *data);//
+void				ft_set_string(t_data *data);
+void				ft_putwstr_p(t_data *data);//
+void				ft_putstr_p(t_data *data);//
 void				ft_putbin(t_data *data);
 void				ft_buffering(t_data *data, const void *s, int len);
 

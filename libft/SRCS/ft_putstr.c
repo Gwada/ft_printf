@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 16:49:54 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/11/06 16:49:56 by dlavaury         ###   ########.fr       */
+/*   Updated: 2017/12/17 15:29:36 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void	ft_putstr(char const *s)
 {
 	while (*s)
-		ft_putchar(*(s++));
+		ft_putchar(*s++);
 }
