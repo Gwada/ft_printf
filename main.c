@@ -11,13 +11,13 @@ int		main (void)
 	printf("/* printf */\n");
 	printf("/**********/\n");
 
-	printf("ret = %d\n\n", printf("affichage = |test%#  --++++. +010|\n"));
+	printf("ret = %d\n\n", printf("affichage = |%  +010s|\n", "test"));
 
 	printf("/*************/\n");
 	printf("/* ft_printf */\n");
 	printf("/*************/\n");
 
-	ft_printf("affichage = |test%#  --++++. +010|\n");
+	ft_printf("affichage = |%  +010s|\n", "test");
 	return (0);
 }
 

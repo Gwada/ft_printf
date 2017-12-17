@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:30:53 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/12/17 20:12:02 by dlavaury         ###   ########.fr       */
+/*   Updated: 2017/12/17 21:02:33 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_putstr_p(t_data *data)
 {
+	int		len;
 	ft_putstr("in putstr -> ");//
 	if (!(data->s = (char*)va_arg(data->ap, unsigned*)))
 	//if (data->B_D & PREC)
@@ -38,7 +39,10 @@ void	ft_putstr_p(t_data *data)
 	}
 	else
 	{
+		printf("len = %d\n", (len = ft_strlen(data->s)));//
 		ft_putstr("|data->s| -> ");//
+		if (data->B_D & PREC)
+		ft_filler();
 		ft_buffering(data, data->s, ft_strlen(data->s));
 	}
 	ft_putstr("end putstr -> ");//

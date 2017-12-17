@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 15:53:27 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/12/17 20:24:58 by dlavaury         ###   ########.fr       */
+/*   Updated: 2017/12/17 21:02:44 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct		s_data
 	int				i_form;
 	int				prec;
 	int				min_s;
+	int				filler;
 	int				i_b;
 	int				i_f;
 	char			*ft;
