@@ -2,7 +2,8 @@
 //# include <limits.h>
 # include "./Includes/ft_printf.h"
 
-#define STR "affichage = |% #--+-+-+--+###--+++###+-++- ..5...6.. -010s|\n"
+#define STR "u%4.2ss, %-1.s\n %---5.3s "
+#define STR2 "%.2s"
 
 int		main (void)
 {
@@ -13,13 +14,13 @@ int		main (void)
 	printf("/* printf */\n");
 	printf("/**********/\n");
 
-	printf("ret = %d\n\n", printf(STR, "test"));
+	printf("\nret = %d\n\n", printf(STR2, NULL));
 
 	printf("/*************/\n");
 	printf("/* ft_printf */\n");
 	printf("/*************/\n");
 
-	printf("%d\n", ft_printf(STR, "test"));
+	printf("\nret = %d\n", ft_printf(STR2, NULL));
 	return (0);
 }
 

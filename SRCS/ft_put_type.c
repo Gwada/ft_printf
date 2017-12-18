@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:22:47 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/12/18 14:37:24 by dlavaury         ###   ########.fr       */
+/*   Updated: 2017/12/18 16:48:31 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_put_type(t_data *data)
 {//
 	//printf("|in put type c = ->%c<-\n", *data->ft);//
 	if (ft_strchr("sS", *data->ft))
-		ft_set_string(data);
+		*data->ft == 'S' || LONGCHECK ? ft_putwstr_p(data) : ft_putstr_p(data);
 	/*else if (ft_strchr("cC", *data->ft)
 		ft_set_car(data);
 	else if (ft_strchr("dDi", *data->ft))

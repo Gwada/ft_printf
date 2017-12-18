@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 15:53:27 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/12/18 11:24:20 by dlavaury         ###   ########.fr       */
+/*   Updated: 2017/12/18 16:47:27 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@
 # define POINTEUR	(1 << 15)
 # define MAX(a, b)	b & ((a - b) >> 31) | a & (~(a - b) >> 31)
 # define MIN(a, b)	a & ((a - b) >> 31) | b & (~(a - b) >> 31)
+# define LONGCHECK	"(data->B_D & LONG || data->B_D & LONGX2)"
 
 /*
 **	*** STRUCTURES ***

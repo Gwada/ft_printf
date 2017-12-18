@@ -6,7 +6,7 @@
 #    By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/13 16:12:24 by dlavaury          #+#    #+#              #
-#    Updated: 2017/12/18 11:24:54 by dlavaury         ###   ########.fr        #
+#    Updated: 2017/12/18 16:47:19 by dlavaury         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ SRCS = $(addprefix ./SRCS/,$(SOURCES))
 OBJ = $(addprefix $(DIR_O)/,$(SOURCES:.c=.o))
 
 # PROGRESS BAR
-T = $(words $($(SRCS)))
+T = $(words $($(SOURCES)))
 N = 0
 C = $(words $N)$(eval N := x $N)
 @ECHO = "[`expr $C '*' 100 / $T`%]"
@@ -94,6 +94,6 @@ go:
 	@time ./ft_printf
 
 norminette:
-	@norminette
+	@norminette **/**.[ch]
 
 .PHONY: all re fclean clean
