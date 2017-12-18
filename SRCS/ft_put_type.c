@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:22:47 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/12/17 21:02:55 by dlavaury         ###   ########.fr       */
+/*   Updated: 2017/12/18 14:37:24 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_put_type(t_data *data)
 {//
-	printf("|in put type c = ->%c<-\n", c);//
+	//printf("|in put type c = ->%c<-\n", *data->ft);//
 	if (ft_strchr("sS", *data->ft))
 		ft_set_string(data);
 	/*else if (ft_strchr("cC", *data->ft)
@@ -27,5 +27,5 @@ void	ft_put_type(t_data *data)
 		ft_putbin(data);*/
 	else
 		ft_no_types(data);
-	ft_putstr("<- end put type |");//
+//	ft_putstr("<- end put type |");//
 }

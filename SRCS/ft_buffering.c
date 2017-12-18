@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 18:44:57 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/12/16 19:45:51 by dlavaury         ###   ########.fr       */
+/*   Updated: 2017/12/18 14:09:22 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_buffering(t_data *data, const void *s, int len)
 {
-	ft_putstr("in buff -> ");//
+	//ft_putstr("in buff -> ");//
 	int		i;
 	char	*src;
 
@@ -33,5 +33,5 @@ void	ft_buffering(t_data *data, const void *s, int len)
 		data->buf[data->i_b++] = src[i];
 		data->len++;
 	}
-	ft_putstr("out buff | ");
+	//ft_putstr("out buff | ");
 }

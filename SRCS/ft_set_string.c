@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/17 13:33:34 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/12/17 21:03:01 by dlavaury         ###   ########.fr       */
+/*   Updated: 2017/12/18 14:18:31 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	ft_set_string(t_data *data)
 {
-	char c;
+	//cc
 
-	c = *data->ft;
-	ft_putstr("in set string -> ");//
-	if (data->B_D & PREC)
+	//c = *data->ft;
+	//ft_putstr("in set string -> ");//
+	/*if (data->B_D & PREC)
 	{
 		if (data->B_D & ZERO)
 			while (data->min_s--)
@@ -27,16 +27,16 @@ void	ft_set_string(t_data *data)
 			while (data->min_s--)
 				ft_buffering(data, " ", 1);
 		return ;
-	}
-	if (c == 'S' || (data->B_D & LONG || data->B_D & LONGX2))
+	}*/
+	if (*data->ft == 'S' || (data->B_D & LONG || data->B_D & LONGX2))
 	{
 		ft_putstr("|LONG ou S| -> ");
 		//ft_putwstr_p(data);//
 	}
 	else
 	{
-		ft_putstr("|s| -> ");
+//		ft_putstr("|s| -> ");
 		ft_putstr_p(data);
 	}
-	ft_putstr("end set string -> ");//
+//	ft_putstr("end set string -> ");//
 }

@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:23:00 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/12/16 20:24:06 by dlavaury         ###   ########.fr       */
+/*   Updated: 2017/12/18 14:33:13 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,19 @@ int			ft_printf(const char *format, ...)
 	{
 		//printf("%c\n", *data.ft);
 		if (*data.ft == '%')
-		{//
-			//printf("go attr ->\n");//
 			ft_attribuate(&data);
-			//printf("out attr ->\n");//
-		}//
 		else if (*data.ft++ && ++data.i == BUFF_SIZE)
 		{
-			printf("i = %d = BUFF_SIZE go buff -> \n", data.i);//
+			//printf("i = %d = BUFF_SIZE go buff -> \n", data.i);//
 			ft_buffering(&data, data.ft - data.i, BUFF_SIZE);
 			data.i = 0;
-			printf("i = %d out buff -> \n", data.i);//
+			//printf("i = %d out buff -> \n", data.i);//
 		}
 	}
-	ft_putstr("end while go buff -> ");//
+	//ft_putstr("end while -> ");//
 	ft_buffering(&data, data.ft - data.i, data.i);
-	ft_putstr("final write \n\n");//
-	write(data.fd, data.buf, ft_strlen(data.buf));
+//	ft_putstr("final write \n\n");//
+	write(data.fd, data.buf, data.i_b);
 	va_end(data.ap);
-	ft_putstr("ret = ");//
-	ft_putnbrendl(data.len);
-	ft_putstr("clear -> end\n");//
 	return (data.len);
 }

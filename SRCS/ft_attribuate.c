@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:23:06 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/12/17 20:41:19 by dlavaury         ###   ########.fr       */
+/*   Updated: 2017/12/18 14:15:45 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 void	ft_attribuate(t_data *data)
 {
-	ft_putstr("c = %\n|in attribuate ->\n");//
+	//ft_putstr("c = %\n|in attribuate ->\n");//
 	ft_attribuate_init(data);
 	if (!*++data->ft)
 	{
 		++data->i;
 		return ;
 	}
-	ft_flags_parser(data);//
-	ft_precision_parser(data);
-	ft_len_mod_parser(data);//
-	ft_flags_parser(data);
-	if (data->B_D & PREC)
+	while (ft_strchr(".0123456789# +-*hjlz", *data->ft))
+	{
+		ft_flags_parser(data);
 		ft_precision_parser(data);
+		ft_len_mod_parser(data);
+	}
 	ft_put_type(data);
-	ft_putstr("<- end attribuate\n\n");//
+	//ft_putstr("\n<- end attribuate|\n\n");//
 }

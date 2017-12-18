@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 15:53:27 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/12/17 21:02:44 by dlavaury         ###   ########.fr       */
+/*   Updated: 2017/12/18 11:24:20 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void				ft_putwstr_p(t_data *data);//
 void				ft_putstr_p(t_data *data);//
 void				ft_putbin(t_data *data);
 void				ft_no_types(t_data *data);
+void				ft_filler(t_data *data, char opt);
 void				ft_buffering(t_data *data, const void *s, int len);
 
 # endif
