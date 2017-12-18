@@ -13,10 +13,10 @@
 #include "ft_printf.h"
 
 void	ft_put_type(t_data *data)
-{//
+{
 	//printf("|in put type c = ->%c<-\n", *data->ft);//
 	if (ft_strchr("sS", *data->ft))
-		*data->ft == 'S' || LONGCHECK ? ft_putwstr_p(data) : ft_putstr_p(data);
+		ft_set_string(data);
 	/*else if (ft_strchr("cC", *data->ft)
 		ft_set_car(data);
 	else if (ft_strchr("dDi", *data->ft))

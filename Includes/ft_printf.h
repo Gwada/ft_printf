@@ -43,7 +43,6 @@
 # define POINTEUR	(1 << 15)
 # define MAX(a, b)	b & ((a - b) >> 31) | a & (~(a - b) >> 31)
 # define MIN(a, b)	a & ((a - b) >> 31) | b & (~(a - b) >> 31)
-# define LONGCHECK	"(data->B_D & LONG || data->B_D & LONGX2)"
 
 /*
 **	*** STRUCTURES ***
@@ -61,10 +60,10 @@ typedef struct		s_data
 	int				i_b;
 	int				i_f;
 	char			*ft;
-	char			*s;
+	//char			*s;
 	char			buf[BUFF_SIZE + 1];
 	short			B_D;
-	wchar_t			*ws;
+	//wchar_t			*ws;
 	va_list			ap;
 	unsigned		car;
 
@@ -85,10 +84,9 @@ void				ft_star_gestion(t_data *data);
 void				ft_precision_parser(t_data *data);
 void				ft_len_mod_parser(t_data *data);
 void				ft_put_type(t_data *data);
-//void				ft_putchar_printf(t_data *data);//
 void				ft_set_string(t_data *data);
-void				ft_putwstr_p(t_data *data);//
-void				ft_putstr_p(t_data *data);//
+void				ft_putwstr_p(t_data *data);
+void				ft_putstr_p(t_data *data);
 void				ft_putbin(t_data *data);
 void				ft_no_types(t_data *data);
 void				ft_filler(t_data *data, char opt);

@@ -2,7 +2,8 @@
 
 size_t	ft_wcharlen(unsigned c)
 {
-	ft_putstr("in wcharlen... out if finish ->");
+//	printf("in wcharlen->\n");
+//	printf("c = %d\n", c);
 	if (c < 0x80)
 		return (1);
 	else if (c < 0x800)

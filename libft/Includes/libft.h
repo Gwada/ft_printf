@@ -22,6 +22,7 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 # include <fcntl.h>
+# include <stdio.h>
 
 /*
 **	MACCROS

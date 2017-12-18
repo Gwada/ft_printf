@@ -19,9 +19,10 @@ void	ft_putstr_p(t_data *data)
 
 	if (!(s = (char*)va_arg(data->ap, unsigned*)))
 		s = "(null)";
-	len = s ? ft_strlen(s) : 6;
+	//len = s ? ft_strlen(s) : 6;//
+	len = ft_strlen(s);
 	data->B_D & PREC ? len = MIN(data->prec, len) : 0;
-	data->filler = data->min_s - len > 0 ? data->min_s - len : 0;
+	data->filler = (data->min_s - len) > 0 ? data->min_s - len : 0;
 	ft_filler(data, 0);
 	ft_buffering(data, s, len);
 	ft_filler(data, 1);

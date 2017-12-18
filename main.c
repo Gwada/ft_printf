@@ -2,13 +2,14 @@
 //# include <limits.h>
 # include "./Includes/ft_printf.h"
 
-#define STR "u%4.2ss, %-1.s\n %---5.3s "
-#define STR2 "%.2s"
+#define STR		"u%4.2ss, %-1.s\n %---5.3s "
+#define STR2	"%S"
 
 int		main (void)
 {
 	char *s = "start aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa end";
-	//char *s1 = "Dimitri";
+	wchar_t s1[2];
+	s1[0] = 'A', s1[1] = '\0';
 	//char *s2 = "today";
 	printf("/**********/\n");
 	printf("/* printf */\n");
