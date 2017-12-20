@@ -62,10 +62,12 @@ typedef struct		s_data
 	char			*ft;
 	//char			*s;
 	char			buf[BUFF_SIZE + 1];
+	char			u_c[4];
 	short			B_D;
 	//wchar_t			*ws;
 	va_list			ap;
 	unsigned		car;
+	unsigned		c_len;
 
 }					t_data;
 
@@ -87,6 +89,8 @@ void				ft_put_type(t_data *data);
 void				ft_set_string(t_data *data);
 void				ft_putwstr_p(t_data *data);
 void				ft_putstr_p(t_data *data);
+void				ft_set_car(t_data *data, unsigned c);
+void				ft_putwchar_p(t_data *data, unsigned c, int size, int n_b);
 void				ft_putbin(t_data *data);
 void				ft_no_types(t_data *data);
 void				ft_filler(t_data *data, char opt);

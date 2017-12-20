@@ -2,26 +2,24 @@
 //# include <limits.h>
 # include "./Includes/ft_printf.h"
 
-#define STR		"u%4.2ss, %-1.s\n %---5.3s "
-#define STR2	"%S"
+#define STR		"%C test suite"
+#define ARGUM	0x0A8
 
 int		main (void)
 {
-	char *s = "start aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa end";
-	wchar_t s1[2];
-	s1[0] = 'A', s1[1] = '\0';
+	//char *s = "start aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa end";
 	//char *s2 = "today";
 	printf("/**********/\n");
 	printf("/* printf */\n");
 	printf("/**********/\n");
 
-	printf("\nret = %d\n\n", printf(STR2, NULL));
+	printf("\nret = %d\n\n", printf(STR, ARGUM));
 
 	printf("/*************/\n");
 	printf("/* ft_printf */\n");
 	printf("/*************/\n");
 
-	printf("\nret = %d\n", ft_printf(STR2, NULL));
+	printf("\nret = %d\n", ft_printf(STR, ARGUM));
 	return (0);
 }
 

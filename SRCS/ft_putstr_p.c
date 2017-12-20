@@ -19,8 +19,7 @@ void	ft_putstr_p(t_data *data)
 
 	if (!(s = (char*)va_arg(data->ap, unsigned*)))
 		s = "(null)";
-	//len = s ? ft_strlen(s) : 6;//
-	len = ft_strlen(s);
+	len = s ? ft_strlen(s) : 6;
 	data->B_D & PREC ? len = MIN(data->prec, len) : 0;
 	data->filler = (data->min_s - len) > 0 ? data->min_s - len : 0;
 	ft_filler(data, 0);

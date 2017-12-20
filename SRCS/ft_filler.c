@@ -14,14 +14,13 @@
 
 void	ft_filler(t_data *data, char opt)
 {
-	//ft_putstr("in filler ->\n");//
+	ft_putstr("in filler ->\n");//
 	data->car = ' ' | (data->B_D & ZERO);
-	//printf("data->car = %c\n", data->car);//
 	if (!opt && !(data->B_D & NEG))
 		while (data->filler--)
 			ft_buffering(data, &data->car, 1);
 	else if (opt && data->B_D & NEG)
 		while (data->filler--)
 			ft_buffering(data, &data->car, 1);
-	//ft_putstr("<- end filler\n");//
+	ft_putstr("<- end filler\n");//
 }

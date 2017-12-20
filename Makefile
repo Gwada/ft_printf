@@ -35,6 +35,8 @@ SOURCES =	ft_printf.c \
 			ft_set_string.c \
 			ft_putstr_p.c \
 			ft_putwstr_p.c \
+			ft_set_car.c \
+			ft_putwchar_p.c \
 			ft_putbin.c \
 			ft_no_types.c \
 			ft_filler.c \
@@ -90,7 +92,7 @@ re: fclean
 	@make all
 
 go:
-	@make
+	@make -j4
 	@gcc -o ft_printf main.c $(NAME)
 	@time ./ft_printf
 
