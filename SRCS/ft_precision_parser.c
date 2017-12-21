@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 14:47:34 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/12/18 13:53:11 by dlavaury         ###   ########.fr       */
+/*   Updated: 2017/12/21 10:49:59 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	ft_precision_parser(t_data *data)
 {
-	//ft_putstr("|in prec pars ->\n");//
+	//ft_putstr("|in prec pars ->");//
+	data->min_s = 0;
 	if (*data->ft >= '1' && *data->ft <= '9')
 	{
 		//printf("|1 <= p | -> before min_s = |%d|\n", data->min_s);//
@@ -35,5 +36,5 @@ void	ft_precision_parser(t_data *data)
 		data->B_D |= PREC;
 	//	printf("c = |%c|\n", *data->ft);//
 	}	
-//	ft_putstr("\n<- end prec pars|\n\n");//
+	//ft_putstr(" <- end prec pars|\n");//
 }

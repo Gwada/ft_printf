@@ -3,15 +3,15 @@
 size_t		ft_wstrlen(unsigned *s)
 {
 	size_t	len;
+    size_t  n;
 
 	len = 0;
-	printf("in wstrlen ->\n");//
+    n = 0;
 	while (*s != L'\0')
 	{
-		//printf ("before wcharlen\n");
-		len += ft_wcharlen(*s);
-		s++;
+		if (!(n = ft_wcharlen(*s++)))
+            return (0);
+        len += n;
 	}
-	printf("end wstrlen\n");//
 	return (len);
 }

@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 15:53:27 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/12/18 16:47:27 by dlavaury         ###   ########.fr       */
+/*   Updated: 2017/12/21 20:43:11 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,14 @@ typedef struct		s_data
 	int				filler;
 	int				i_b;
 	int				i_f;
+	int				error;
 	char			*ft;
-	//char			*s;
 	char			buf[BUFF_SIZE + 1];
 	char			u_c[4];
 	short			B_D;
-	//wchar_t			*ws;
 	va_list			ap;
 	unsigned		car;
 	unsigned		c_len;
-
 }					t_data;
 
 /*
@@ -79,9 +77,7 @@ int					ft_printf(const char *format, ...);
 int					ft_dprintf(int fd, const char *format, ...);
 void				ft_init_printf(t_data *data, const char *s, int fd);
 void				ft_attribuate(t_data *data);
-void				ft_attribuate_init(t_data *data);
 void				ft_flags_parser(t_data *data);
-void				ft_find_flags(t_data *data);
 void				ft_star_gestion(t_data *data);
 void				ft_precision_parser(t_data *data);
 void				ft_len_mod_parser(t_data *data);
@@ -95,5 +91,6 @@ void				ft_putbin(t_data *data);
 void				ft_no_types(t_data *data);
 void				ft_filler(t_data *data, char opt);
 void				ft_buffering(t_data *data, const void *s, int len);
+void				ft_error(t_data *data, int to_remove);
 
 # endif

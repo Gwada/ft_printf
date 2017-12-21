@@ -1,25 +1,31 @@
 # include <stdio.h>
-//# include <limits.h>
+# include <wchar.h>
+# include <locale.h>
 # include "./Includes/ft_printf.h"
 
-#define STR		"%C test suite"
-#define ARGUM	0x0A8
+#define STR		"%ls", s
 
 int		main (void)
 {
 	//char *s = "start aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa end";
-	//char *s2 = "today";
+	wchar_t s[4];
+	//printf("MB_CUR_MAX = %d\n", MB_CUR_MAX);
+	//setlocale(LC_ALL, "");
+	s[0] = 0x53;
+	s[1] = 0x3abc;
+	s[2] = 0x81000;
+	s[3] = '\0';
 	printf("/**********/\n");
 	printf("/* printf */\n");
 	printf("/**********/\n");
-
-	printf("\nret = %d\n\n", printf(STR, ARGUM));
+	printf ("%d\n", s[1]);
+	printf("\nret = %d\n\n", printf(STR));
 
 	printf("/*************/\n");
 	printf("/* ft_printf */\n");
 	printf("/*************/\n");
 
-	printf("\nret = %d\n", ft_printf(STR, ARGUM));
+	printf("\nret = %d\n", ft_printf(STR));
 	return (0);
 }
 

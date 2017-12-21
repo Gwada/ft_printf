@@ -6,7 +6,7 @@
 #    By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/13 16:12:24 by dlavaury          #+#    #+#              #
-#    Updated: 2017/12/18 16:47:19 by dlavaury         ###   ########.fr        #
+#    Updated: 2017/12/21 20:43:17 by dlavaury         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,18 +25,13 @@ HEADER = -I Includes
 SOURCES =	ft_printf.c \
 			ft_init_printf.c \
 			ft_attribuate.c \
-			ft_attribuate_init.c \
 			ft_flags_parser.c \
-			ft_find_flags.c \
 			ft_star_gestion.c \
 			ft_precision_parser.c \
 			ft_len_mod_parser.c \
 			ft_put_type.c \
-			ft_set_string.c \
-			ft_putstr_p.c \
-			ft_putwstr_p.c \
 			ft_set_car.c \
-			ft_putwchar_p.c \
+			ft_set_string.c \
 			ft_putbin.c \
 			ft_no_types.c \
 			ft_filler.c \
