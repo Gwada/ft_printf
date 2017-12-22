@@ -3,13 +3,12 @@
 # include <locale.h>
 # include "./Includes/ft_printf.h"
 
-#define STR		"%ls", s
+#define STR		"|%---13.5ls|", s
+#define STR2	"|%9.6ls %S|", s, (wchar_t*)'a'
 
 int		main (void)
 {
-	//char *s = "start aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa end";
 	wchar_t s[4];
-	//printf("MB_CUR_MAX = %d\n", MB_CUR_MAX);
 	//setlocale(LC_ALL, "");
 	s[0] = 0x53;
 	s[1] = 0x3abc;
@@ -18,14 +17,11 @@ int		main (void)
 	printf("/**********/\n");
 	printf("/* printf */\n");
 	printf("/**********/\n");
-	printf ("%d\n", s[1]);
-	printf("\nret = %d\n\n", printf(STR));
-
+	printf("\nret = %d\n\n", printf(STR2));
 	printf("/*************/\n");
 	printf("/* ft_printf */\n");
 	printf("/*************/\n");
-
-	printf("\nret = %d\n", ft_printf(STR));
+	printf("\nret = %d\n", ft_printf(STR2));
 	return (0);
 }
 

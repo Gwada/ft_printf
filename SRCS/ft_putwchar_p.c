@@ -1,8 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putwchar_p.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/12/22 18:36:20 by dlavaury          #+#    #+#             */
+/*   Updated: 2017/12/22 18:36:24 by dlavaury         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 void	ft_putwchar_p(t_data *data, unsigned c, int size, int n_b)
 {
-	//printf("in putwchar\n");//
 	if (n_b <= size && n_b <= MB_CUR_MAX)
 	{
 		ft_bzero(data->u_c, 4);
@@ -27,5 +38,4 @@ void	ft_putwchar_p(t_data *data, unsigned c, int size, int n_b)
 		}
 		ft_buffering(data, data->u_c, size);
 	}
-//	printf("end putwchar\n");//
 }

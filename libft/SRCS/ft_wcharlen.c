@@ -6,13 +6,13 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/21 13:22:13 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/12/21 16:02:44 by dlavaury         ###   ########.fr       */
+/*   Updated: 2017/12/22 19:12:13 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		ft_wcharlen(unsigned c)
+size_t		ft_wcharlen(wchar_t c)
 {
 	if ((c <= 0x7F || c <= 0xff) && MB_CUR_MAX >= 1)
 		return (1);

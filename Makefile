@@ -6,7 +6,7 @@
 #    By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/13 16:12:24 by dlavaury          #+#    #+#              #
-#    Updated: 2017/12/21 20:43:17 by dlavaury         ###   ########.fr        #
+#    Updated: 2017/12/22 19:46:30 by dlavaury         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,7 @@ re: fclean
 	@make all
 
 go:
-	@make -j4
+	@make -j4 re
 	@gcc -o ft_printf main.c $(NAME)
 	@time ./ft_printf
 

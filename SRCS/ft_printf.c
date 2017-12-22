@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:23:00 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/12/21 20:43:21 by dlavaury         ###   ########.fr       */
+/*   Updated: 2017/12/22 19:46:41 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ int			ft_printf(const char *format, ...)
 //	ft_putstr("final write \n\n");//
 	write(data.fd, data.buf, data.i_b);
 	va_end(data.ap);
-	return (!data.error ? data.len : data.error);
+	return (data.len);
 }

@@ -1,17 +1,11 @@
 #include "libft.h"
 
-size_t		ft_wstrlen(unsigned *s)
+size_t		ft_wstrlen(wchar_t *s)
 {
-	size_t	len;
-    size_t  n;
+	size_t	wstrlen;
 
-	len = 0;
-    n = 0;
+	wstrlen = 0;
 	while (*s != L'\0')
-	{
-		if (!(n = ft_wcharlen(*s++)))
-            return (0);
-        len += n;
-	}
-	return (len);
+		wstrlen += ft_wcharlen(*s++);
+	return (wstrlen);
 }
