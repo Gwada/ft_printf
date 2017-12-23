@@ -11,6 +11,12 @@
 /* ************************************************************************** */
 
 # include "ft_printf.h"
+static void	ft_init_printf(t_data *data, const char *s, int fd)
+{
+	ft_bzero(data, sizeof(*data));
+	data->ft = (char*)s;
+	data->fd = fd;
+}
 
 int			ft_printf(const char *format, ...)
 {

@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void	ft_putwchar_p(t_data *data, unsigned c, int size, int n_b)
+void	ft_putwchar_p(t_data *data, wchar_t c, int size, int n_b)
 {
 	if (n_b <= size && n_b <= MB_CUR_MAX)
 	{
@@ -40,7 +40,7 @@ void	ft_putwchar_p(t_data *data, unsigned c, int size, int n_b)
 	}
 }
 
-void	ft_set_car(t_data *data, unsigned c)
+void	ft_set_car(t_data *data, wchar_t c)
 {
 	data->c_len = (data->B_D & LONG || data->B_D & LONGX2) ? ft_wcharlen(c) : 1;
 	!data->c_len && data->B_D & LONG ? data->error = -1 : 0;

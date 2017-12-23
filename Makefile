@@ -12,24 +12,23 @@
 
 NAME = libftprintf.a
 
-CC = gcc
+GCC = gcc
 
 FLAGS = -Wall -Wextra -Werror
 
-DIR_C = SRCS
-
-DIR_O = temp
-
 HEADER = -I Includes
 
-SOURCES =	ft_printf.c \
-			ft_init_printf.c \
+SOURCES =	ft_atoi.c \
+			ft_bzero.c \
+			ft_itoa.c \
+			ft_strlen.c \
+			ft_strchr.c \
+			ft_strchri.c \
+			ft_wcharlen.c \
+			ft_wstrlen.c \
+			ft_printf.c \
 			ft_attribuate.c \
-			ft_flags_parser.c \
-			ft_star_gestion.c \
-			ft_precision_parser.c \
-			ft_len_mod_parser.c \
-			ft_put_type.c \
+			parsing.c \
 			ft_set_car.c \
 			ft_set_string.c \
 			ft_putbin.c \
@@ -37,12 +36,10 @@ SOURCES =	ft_printf.c \
 			ft_filler.c \
 			ft_buffering.c
 
-SRCS = $(addprefix ./SRCS/,$(SOURCES))
-
-OBJ = $(addprefix $(DIR_O)/,$(SOURCES:.c=.o))
+OBJ = $(addprefix SRCS/,$(SOURCES:.c=.o))
 
 # PROGRESS BAR
-T = $(words $($(SOURCES)))
+T = $(words $(addprefix SRCS/,$(SOURCES)))
 N = 0
 C = $(words $N)$(eval N := x $N)
 @ECHO = "[`expr $C '*' 100 / $T`%]"
@@ -61,33 +58,26 @@ _END=\x1b[0m
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@make -C libft
-	@cp libft/libft.a ./$(NAME)
-	@ar rc $(NAME) $(OBJ) $?
+	@ar rc $(NAME) $?
 	@ranlib $(NAME)
 	@echo "\n$(_CYAN)$(NAME)$(_END) $(_GREEN)edited$(_END)"
 
-$(DIR_O)/%.o: $(DIR_C)/%.c
-	@mkdir -p temp
+%.o: %.c
 	@printf "%-60b\r" "$(ECHO) Compressing $@"
-	@$(CC) $(HEADER) -o $@ -c $<
+	@$(GCC) $(HEADER) -o $@ -c $<
 
 clean:
-	@make -C libft clean
 	@rm -f $(OBJ)
-	@rm -rf $(DIR_O)
 	@echo "$(_RED)clean$(_END)	: $(_GREEN)done$(_END)"
 
 fclean: clean
-	@make -C libft fclean
 	@rm -f $(NAME)
 	@echo "$(_RED)fclean$(_END)	: $(_GREEN)done$(_END)"
 
 re: fclean
 	@make all
 
-go:
-	@make -j4 re
+go: re
 	@gcc -o ft_printf main.c $(NAME)
 	@time ./ft_printf
 
