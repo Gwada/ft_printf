@@ -9,19 +9,20 @@
 int		main (void)
 {
 	wchar_t s[4];
-	//setlocale(LC_ALL, "");
+	setlocale(LC_ALL, "");
 	s[0] = 0x53;
 	s[1] = 0x3abc;
 	s[2] = 0x81000;
 	s[3] = '\0';
+	long int n = 0, n2 = 0;
 	printf("/**********/\n");
 	printf("/* printf */\n");
 	printf("/**********/\n");
-	printf("\nret = %d\n\n", printf(STR2));
+	printf("\nret = %d\n\n", printf(STR));
 	printf("/*************/\n");
 	printf("/* ft_printf */\n");
 	printf("/*************/\n");
-	printf("\nret = %d\n", ft_printf(STR2));
+	printf("\nret = %d\n", ft_printf(STR));
 	return (0);
 }
 

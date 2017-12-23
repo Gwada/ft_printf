@@ -45,7 +45,10 @@
 # define MAX(a, b)	b & ((a - b) >> 31) | a & (~(a - b) >> 31)
 # define MIN(a, b)	a & ((a - b) >> 31) | b & (~(a - b) >> 31)
 # define BUFF_SIZE	512
-
+# define ULX2I		unsigned long long int
+# define ULI		unsigned long int
+# define USI		unsigned short int
+# define UC			unsigned char
 /*
 **	*** STRUCTURES ***
 */
@@ -54,7 +57,6 @@ typedef struct		s_data
 {
 	int				i;
 	int				fd;
-	int				len;
 	int				i_form;
 	int				prec;
 	int				min_s;
@@ -69,6 +71,7 @@ typedef struct		s_data
 	va_list			ap;
 	unsigned		car;
 	unsigned		c_len;
+	long long int	len;
 }					t_data;
 
 /*
@@ -96,6 +99,7 @@ void				ft_putwstr_p(t_data *data);
 void				ft_putstr_p(t_data *data);
 void				ft_set_car(t_data *data, wchar_t c);
 void				ft_putwchar_p(t_data *data, wchar_t c, int size, int n_b);
+void				ft_set_len(t_data *data);
 void				ft_putbin(t_data *data);
 void				ft_no_types(t_data *data);
 void				ft_filler(t_data *data, char opt);

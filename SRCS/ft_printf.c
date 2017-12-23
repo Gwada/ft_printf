@@ -43,5 +43,5 @@ int			ft_printf(const char *format, ...)
 //	ft_putstr("final write \n\n");//
 	write(data.fd, data.buf, data.i_b);
 	va_end(data.ap);
-	return (data.len);
+	return ((int)data.len);
 }

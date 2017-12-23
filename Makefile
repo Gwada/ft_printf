@@ -14,7 +14,7 @@ NAME = libftprintf.a
 
 GCC = gcc
 
-FLAGS = -Wall -Wextra -Werror
+#FLAGS = -Wall -Wextra -Werror
 
 HEADER = -I Includes
 
@@ -31,6 +31,7 @@ SOURCES =	ft_atoi.c \
 			parsing.c \
 			ft_set_car.c \
 			ft_set_string.c \
+			ft_set_len.c \
 			ft_putbin.c \
 			ft_no_types.c \
 			ft_filler.c \
@@ -64,6 +65,7 @@ $(NAME): $(OBJ)
 
 %.o: %.c
 	@printf "%-60b\r" "$(ECHO) Compressing $@"
+#	@$(GCC) $(FLAGS) $(HEADER) -o $@ -c $<
 	@$(GCC) $(HEADER) -o $@ -c $<
 
 clean:
@@ -79,6 +81,7 @@ re: fclean
 
 go: re
 	@gcc -o ft_printf main.c $(NAME)
+#	@gcc $(FLAGS) -o ft_printf main.c $(NAME)
 	@time ./ft_printf
 
 norminette:
