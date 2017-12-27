@@ -81,7 +81,7 @@ void	ft_put_type(t_data *data)
 		ft_set_len(data);
 	/*else if (ft_strchr("dDi", *data->ft))
 		ft_set_nbr(data);
-	else if (ft_strchr("fF", *data->ft)
+	/*else if (ft_strchr("fF", *data->ft)
 		ft_set_double(data);
 	else if (*data->ft == 'b')
 		ft_putbin(data);*/

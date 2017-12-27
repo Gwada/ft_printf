@@ -31,6 +31,7 @@ SOURCES =	ft_atoi.c \
 			parsing.c \
 			ft_set_car.c \
 			ft_set_string.c \
+			ft_set_nbr.c \
 			ft_set_len.c \
 			ft_putbin.c \
 			ft_no_types.c \
@@ -69,7 +70,7 @@ $(NAME): $(OBJ)
 	@$(GCC) $(HEADER) -o $@ -c $<
 
 clean:
-	@rm -f $(OBJ)
+	@rm -f **/**.o
 	@echo "$(_RED)clean$(_END)	: $(_GREEN)done$(_END)"
 
 fclean: clean
@@ -81,8 +82,9 @@ re: fclean
 
 go: re
 	@gcc -o ft_printf main.c $(NAME)
+	@./ft_printf
 #	@gcc $(FLAGS) -o ft_printf main.c $(NAME)
-	@time ./ft_printf
+#	@time ./ft_printf
 
 norminette:
 	@norminette **/**.[ch]

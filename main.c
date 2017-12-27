@@ -3,26 +3,27 @@
 # include <locale.h>
 # include "./Includes/ft_printf.h"
 
-#define STR		"|%---13.5ls|", s
-#define STR2	"|%9.6ls %S|", s, (wchar_t*)'a'
+#define STR		"|%---13.15ls|\n", s
+#define STR2	"|%+12d|", d
 
 int		main (void)
 {
-	wchar_t s[4];
+	/*wchar_t s[4];
 	setlocale(LC_ALL, "");
 	s[0] = 0x53;
 	s[1] = 0x3abc;
 	s[2] = 0x81000;
 	s[3] = '\0';
-	long int n = 0, n2 = 0;
+	long int n = 0, n2 = 0;*/
+	int d = -541652;
 	printf("/**********/\n");
 	printf("/* printf */\n");
 	printf("/**********/\n");
-	printf("\nret = %d\n\n", printf(STR));
+	printf("\nret = %d\n\n", printf(STR2));
 	printf("/*************/\n");
 	printf("/* ft_printf */\n");
 	printf("/*************/\n");
-	printf("\nret = %d\n", ft_printf(STR));
+	printf("\nret = %d\n", ft_printf(STR2));
 	return (0);
 }
 

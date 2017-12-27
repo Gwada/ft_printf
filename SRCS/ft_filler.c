@@ -14,8 +14,7 @@
 
 void	ft_filler(t_data *data, char opt)
 {
-	//ft_putstr("in filler ->\n");//
-	if (!data->filler)
+	if (data->filler <= 0)
 		return ;
 	data->car = ' ' | (data->B_D & ZERO);
 	if (!opt && !(data->B_D & NEG))
@@ -24,5 +23,4 @@ void	ft_filler(t_data *data, char opt)
 	else if (opt && data->B_D & NEG)
 		while (data->filler--)
 			ft_buffering(data, &data->car, 1);
-	//ft_putstr("<- end filler\n");//
 }

@@ -99,6 +99,7 @@ void				ft_putwstr_p(t_data *data);
 void				ft_putstr_p(t_data *data);
 void				ft_set_car(t_data *data, wchar_t c);
 void				ft_putwchar_p(t_data *data, wchar_t c, int size, int n_b);
+void				ft_set_nbr(t_data *data);
 void				ft_set_len(t_data *data);
 void				ft_putbin(t_data *data);
 void				ft_no_types(t_data *data);
