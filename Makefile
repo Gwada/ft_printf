@@ -20,19 +20,22 @@ HEADER = -I Includes
 
 SOURCES =	ft_atoi.c \
 			ft_bzero.c \
-			ft_itoa.c \
 			ft_strlen.c \
 			ft_strchr.c \
 			ft_strchri.c \
+			itoa_p.c \
 			ft_wcharlen.c \
 			ft_wstrlen.c \
 			ft_printf.c \
 			ft_attribuate.c \
 			parsing.c \
-			ft_set_car.c \
-			ft_set_string.c \
-			ft_set_nbr.c \
-			ft_set_len.c \
+			set_car.c \
+			set_string.c \
+			set_nbr.c \
+			set_float.c \
+			set_len.c \
+			set_error.c \
+			set_adress.c \
 			ft_putbin.c \
 			ft_no_types.c \
 			ft_filler.c \
@@ -80,7 +83,8 @@ fclean: clean
 re: fclean
 	@make all
 
-go: re
+go: fclean
+	@make all
 	@gcc -o ft_printf main.c $(NAME)
 	@./ft_printf
 #	@gcc $(FLAGS) -o ft_printf main.c $(NAME)

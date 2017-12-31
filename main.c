@@ -4,7 +4,7 @@
 # include "./Includes/ft_printf.h"
 
 #define STR		"|%---13.15ls|\n", s
-#define STR2	"|%+12d|", d
+#define STR2	"|%.f|", d
 
 int		main (void)
 {
@@ -13,9 +13,8 @@ int		main (void)
 	s[0] = 0x53;
 	s[1] = 0x3abc;
 	s[2] = 0x81000;
-	s[3] = '\0';
-	long int n = 0, n2 = 0;*/
-	int d = -541652;
+	s[3] = '\0';*/
+	double d = 1275326;
 	printf("/**********/\n");
 	printf("/* printf */\n");
 	printf("/**********/\n");

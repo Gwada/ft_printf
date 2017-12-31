@@ -44,14 +44,11 @@ void	ft_set_car(t_data *data, wchar_t c)
 {
 	data->c_len = (data->B_D & LONG || data->B_D & LONGX2) ? ft_wcharlen(c) : 1;
 	!data->c_len && data->B_D & LONG ? data->error = -1 : 0;
-	if (!data->error)
-	{
-		if ((data->filler = data->min_s - data->c_len) < 0)
-			data->filler = 0;
-		ft_filler(data, 0);
-		ft_putwchar_p(data, c, data->c_len, data->c_len);
-		ft_filler(data, 1);
-	}
-	else
-		ft_error(data, data->i);
+	if (data->error)
+		return (ft_error(data, data->i));
+	if ((data->filler = data->min_s - data->c_len) < 0)
+		data->filler = 0;
+	ft_filler(data, 0);
+	ft_putwchar_p(data, c, data->c_len, data->c_len);
+	ft_filler(data, 1);
 }

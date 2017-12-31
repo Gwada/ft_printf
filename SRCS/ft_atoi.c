@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_atoi(const char *nptr)
+int		ft_atoi_p(const char *nptr)
 {
 	int					i;
 	int					num;

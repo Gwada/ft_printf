@@ -21,6 +21,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <errno.h>
+# include <string.h>
 
 /*
 **	*** MACCROS ***
@@ -49,6 +51,9 @@
 # define ULI		unsigned long int
 # define USI		unsigned short int
 # define UC			unsigned char
+# define BASE8		(n || d->B_D & POINTEUR) && d->B_D & DIESE && b == 8 && !ext
+# define BASE16		(n || d->B_D & POINTEUR) && d->B_D & DIESE && b == 16
+
 /*
 **	*** STRUCTURES ***
 */
@@ -70,7 +75,7 @@ typedef struct		s_data
 	short			B_D;
 	va_list			ap;
 	unsigned		car;
-	unsigned		c_len;
+	int		c_len;
 	long long int	len;
 }					t_data;
 
@@ -78,9 +83,8 @@ typedef struct		s_data
 **	*** PROTOTYPES ***
 */
 
-int					ft_atoi(const char *nptr);
+int					ft_atoi_p(const char *nptr);
 void				ft_bzero(void *s, size_t n);
-char				*ft_itoa(int n);
 char				*ft_strchr(const char *s, int c);
 int					ft_strchri(const char *s, unsigned c);
 size_t				ft_strlen(const char *s);
@@ -99,7 +103,13 @@ void				ft_putwstr_p(t_data *data);
 void				ft_putstr_p(t_data *data);
 void				ft_set_car(t_data *data, wchar_t c);
 void				ft_putwchar_p(t_data *data, wchar_t c, int size, int n_b);
-void				ft_set_nbr(t_data *data);
+void				ft_set_signed(t_data *data);
+void				ft_itoa_p(t_data *data, long long n, int len);
+void				ft_itoa_buf(t_data *data, ULX2I n, int b, char *nb);
+void				ft_itoa_base_p(t_data *data, ULX2I n, int b);
+void				ft_set_float(t_data *data);
+void				ft_set_error(t_data *data);
+void				ft_set_adress(t_data *data);
 void				ft_set_len(t_data *data);
 void				ft_putbin(t_data *data);
 void				ft_no_types(t_data *data);

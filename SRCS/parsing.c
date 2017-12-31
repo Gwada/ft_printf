@@ -36,14 +36,14 @@ void	ft_precision_parser(t_data *data)
 	data->min_s = 0;
 	if (*data->ft >= '1' && *data->ft <= '9')
 	{
-		data->min_s = MAX(1, ft_atoi(data->ft));
+		data->min_s = MAX(1, ft_atoi_p(data->ft));
 		while (*data->ft >= '0' && *data->ft <= '9')
 			++data->ft;
 	}
 	if (*data->ft == '.')
 	{
 		++data->ft;
-		data->prec = MAX(ft_atoi(data->ft), 0);
+		data->prec = MAX(ft_atoi_p(data->ft), 0);
 		while (*data->ft >= '0' && *data->ft <= '9')
 			++data->ft;
 		data->B_D |= PREC;
@@ -79,11 +79,15 @@ void	ft_put_type(t_data *data)
 		ft_set_car(data, va_arg(data->ap, int));
 	else if (*data->ft == 'n')
 		ft_set_len(data);
-	/*else if (ft_strchr("dDi", *data->ft))
-		ft_set_nbr(data);
-	/*else if (ft_strchr("fF", *data->ft)
-		ft_set_double(data);
-	else if (*data->ft == 'b')
+	else if (ft_strchr("dDi", *data->ft))
+		ft_set_signed(data);
+	else if (*data->ft == 'm')
+		ft_set_error(data);
+	else if (*data->ft == 'p')
+		ft_set_adress(data);
+	else if (ft_strchr("fF", *data->ft))
+		ft_set_float(data);
+	/*else if (*data->ft == 'b')
 		ft_putbin(data);*/
 	else
 		ft_no_types(data);
