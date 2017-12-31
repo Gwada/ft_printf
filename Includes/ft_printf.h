@@ -107,7 +107,7 @@ void				ft_set_signed(t_data *data);
 void				ft_itoa_p(t_data *data, long long n, int len);
 void				ft_itoa_buf(t_data *data, ULX2I n, int b, char *nb);
 void				ft_itoa_base_p(t_data *data, ULX2I n, int b);
-void				ft_set_float(t_data *data);
+void				ft_set_float(t_data *data, double n);
 void				ft_set_error(t_data *data);
 void				ft_set_adress(t_data *data);
 void				ft_set_len(t_data *data);

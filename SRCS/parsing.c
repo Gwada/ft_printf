@@ -86,7 +86,7 @@ void	ft_put_type(t_data *data)
 	else if (*data->ft == 'p')
 		ft_set_adress(data);
 	else if (ft_strchr("fF", *data->ft))
-		ft_set_float(data);
+		ft_set_float(data, (double)va_arg(data->ap, double));
 	/*else if (*data->ft == 'b')
 		ft_putbin(data);*/
 	else
