@@ -18,13 +18,10 @@ GCC = gcc
 
 HEADER = -I Includes
 
-SOURCES =	ft_atoi.c \
-			ft_bzero.c \
-			ft_strlen.c \
+SOURCES =	tools.c \
 			strchr.c \
 			itoa_p.c \
-			ft_wcharlen.c \
-			ft_wstrlen.c \
+			wlen.c \
 			ft_printf.c \
 			ft_attribuate.c \
 			parsing.c \

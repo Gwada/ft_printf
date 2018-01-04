@@ -10,6 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+# include "ft_printf.h"
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	if (s)
+	   while (s[i])
+		   ++i;
+	return (i);
+}
+
+void	ft_bzero(void *s, size_t n)
+{
+	while (n)
+		*((char*)s + n-- - 1) = '\0';
+}
+
 int		ft_atoi_p(const char *nptr)
 {
 	int					i;

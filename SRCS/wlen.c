@@ -30,3 +30,13 @@ size_t		ft_wcharlen(wchar_t c)
 		return (4);
 	return (0);
 }
+
+size_t		ft_wstrlen(wchar_t *ws)
+{
+	size_t	wstrlen;
+
+	wstrlen = 0;
+	while (*ws != L'\0')
+		wstrlen += ft_wcharlen(*ws++);
+	return (wstrlen);
+}
