@@ -21,8 +21,7 @@ HEADER = -I Includes
 SOURCES =	ft_atoi.c \
 			ft_bzero.c \
 			ft_strlen.c \
-			ft_strchr.c \
-			ft_strchri.c \
+			strchr.c \
 			itoa_p.c \
 			ft_wcharlen.c \
 			ft_wstrlen.c \
@@ -34,9 +33,9 @@ SOURCES =	ft_atoi.c \
 			set_nbr.c \
 			set_float.c \
 			set_len.c \
+			set_base.c \
 			set_error.c \
 			set_adress.c \
-			ft_putbin.c \
 			ft_no_types.c \
 			ft_filler.c \
 			ft_buffering.c
@@ -83,7 +82,9 @@ fclean: clean
 re: fclean
 	@make all
 
-go: fclean
+go:
+	@clear
+	@make fclean
 	@make all
 	@gcc -o ft_printf main.c $(NAME)
 	@./ft_printf

@@ -62,8 +62,8 @@ void	ft_len_mod_parser(t_data *data)
 			data->B_D |= INTMAX;
 		else if (*data->ft == 'z')
 			data->B_D |= SIZE_T;
-		else if (*data->ft == 'q')
-			data->B_D |= LONGX2;
+		/*else if (*data->ft == 'q')//
+			data->B_D |= LONGX2;*///
 		else
 			break ;
 		++data->ft;
@@ -87,8 +87,8 @@ void	ft_put_type(t_data *data)
 		ft_set_adress(data);
 	else if (ft_strchr("fF", *data->ft))
 		ft_set_float(data, (double)va_arg(data->ap, double));
-	/*else if (*data->ft == 'b')
-		ft_putbin(data);*/
+	else if (ft_strchr("bBoOuUxX", *data->ft))
+		ft_set_base(data);
 	else
 		ft_no_types(data);
 //	printf("<- end put type |\n");//
