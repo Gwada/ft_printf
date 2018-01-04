@@ -21,7 +21,6 @@ HEADER = -I Includes
 SOURCES =	tools.c \
 			strchr.c \
 			itoa_p.c \
-			wlen.c \
 			ft_printf.c \
 			ft_attribuate.c \
 			parsing.c \
