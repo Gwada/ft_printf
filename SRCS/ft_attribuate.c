@@ -36,7 +36,7 @@ void			ft_attribuate(t_data *data)
 		ft_len_mod_parser(data);
 	}
 	data->B_D & POS ? data->B_D &= ~SPACE : 0;
-	if (ft_strchr("BCDOSUX", *data->ft))
+	if (ft_strchr("BCDOSUX", *data->ft))//
 		data->B_D |= *data->ft != 'X' ? LONG : MAJ;
 	ft_put_type(data);
 	data->i = -1;
