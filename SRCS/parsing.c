@@ -73,6 +73,7 @@ void	ft_len_mod_parser(t_data *data)
 void	ft_put_type(t_data *data)
 {
 	//printf("|in put type c = ->%c<-\n", *data->ft);//
+	//printf("[%c][*%c][%c][%c]\n",*(data->ft-1),*data->ft,*(data->ft+1),*(data->ft+2));//
 	if (ft_strchr("sS", *data->ft))
 		ft_set_string(data);
 	else if (ft_strchr("cC", *data->ft))
@@ -91,5 +92,6 @@ void	ft_put_type(t_data *data)
 		ft_set_base(data);
 	else
 		ft_no_types(data);
+	//printf("[%c][*%c][%c]\n",*(data->ft-1),*data->ft,*(data->ft+1));//
 //	printf("<- end put type |\n");//
 }

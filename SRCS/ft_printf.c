@@ -26,12 +26,10 @@ int			ft_printf(const char *format, ...)
 	va_start(data.ap, format);
 	while (*data.ft && !data.error)
 	{
-		//printf("%c\n", *data.ft);
 		if (*data.ft == '%')
 			ft_attribuate(&data);
 		else if (*data.ft++ && ++data.i == BUFF_SIZE)
 		{
-			//printf("i = %d = BUFF_SIZE go buff -> \n", data.i);//
 			ft_buffering(&data, data.ft - data.i, BUFF_SIZE);
 			data.i = 0;
 			//printf("i = %d out buff -> \n", data.i);//

@@ -12,12 +12,12 @@
 
 #include "ft_printf.h"
 
-static	void	ft_att_init(t_data *d)
+static	void	ft_att_init(t_data *data)
 {
-	ft_buffering(d, d->ft - d->i, d->i);
-	d->B_D = 0;
-	d->prec = 1;
-	d->min_s = 0;
+	ft_buffering(data, data->ft - data->i, data->i);
+	data->B_D = 0;
+	data->prec = 1;
+	data->min_s = 0;
 }
 
 void			ft_attribuate(t_data *data)
@@ -39,6 +39,7 @@ void			ft_attribuate(t_data *data)
 	if (ft_strchr("BCDOSUX", *data->ft))//
 		data->B_D |= *data->ft != 'X' ? LONG : MAJ;
 	ft_put_type(data);
+//	printf("\n*data->ft = |%c| i = %d\n\n",*data->ft, data->i);
 	data->i = -1;
 	//ft_putstr("<- end attribuate|\n\n");//
 }

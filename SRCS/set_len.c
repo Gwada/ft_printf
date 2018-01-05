@@ -7,9 +7,9 @@ void	ft_set_len(t_data *data)
 	else if (data->B_D & LONG)
 		*va_arg(data->ap, ULI*) = (ULI)data->len;
 	else if (data->B_D & SHORT)
-		*va_arg(data->ap, USI*) = (USI)data->len;
+		*va_arg(data->ap, int*) = (USI)data->len;
 	else if (data->B_D & SHORTX2)
-		*va_arg(data->ap, UC*) = (UC)data->len;
+		*va_arg(data->ap, int*) = (UC)data->len;
 	else
 		*va_arg(data->ap, int*) = (int)data->len;
 }

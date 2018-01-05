@@ -14,11 +14,13 @@
 
 void	ft_no_types(t_data *data)
 {
-	//printf("in no types\nmin_s = %d\n", data->min_s);
 	if ((data->filler = data->min_s - 1) > 0)
 		ft_filler(data, 0);
-	ft_buffering(data, data->ft, 1);
+	if (*data->ft == '%')
+		ft_buffering(data, data->ft++, 2);
+	else
+		ft_buffering(data, data->ft, 1);
 	if (data->filler > 0)
 		ft_filler(data, 1);
-	//ft_putstr("<- end no types\n");
+	//++data->ft;
 }
