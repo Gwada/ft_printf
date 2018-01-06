@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 11:16:06 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/12/21 09:41:18 by dlavaury         ###   ########.fr       */
+/*   Updated: 2018/01/06 20:36:36 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ void	ft_filler(t_data *data, char opt)
 {
 	if (data->filler <= 0)
 		return ;
-	data->car = ' ' | (data->B_D & ZERO);
-	if (!opt && !(data->B_D & NEG))
+	data->car = ' ' | (data->bd & ZERO);
+	if (!opt && !(data->bd & NEG))
 		while (data->filler--)
 			ft_buffering(data, &data->car, 1);
-	else if (opt && data->B_D & NEG)
+	else if (opt && data->bd & NEG)
 		while (data->filler--)
 			ft_buffering(data, &data->car, 1);
 }

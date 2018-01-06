@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/21 10:23:24 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/12/21 20:42:46 by dlavaury         ###   ########.fr       */
+/*   Updated: 2018/01/06 17:38:01 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,8 @@ void	ft_putwchar_p(t_data *data, wchar_t c, int size, int n_b)
 
 void	ft_set_car(t_data *data, wchar_t c)
 {
-	data->c_len = (data->B_D & LONG || data->B_D & LONGX2) ? ft_wcharlen(c) : 1;
-	!data->c_len && data->B_D & LONG ? data->error = -1 : 0;
-	if (data->error)
+	data->c_len = (data->bd & LONG || data->bd & LONGX2) ? ft_wcharlen(c) : 1;
+	if ((!data->c_len || c < 0) && data->bd & LONG)
 		return (ft_error(data, data->i));
 	if ((data->filler = data->min_s - data->c_len) < 0)
 		data->filler = 0;

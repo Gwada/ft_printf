@@ -6,7 +6,7 @@
 #    By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/13 16:12:24 by dlavaury          #+#    #+#              #
-#    Updated: 2017/12/22 19:46:30 by dlavaury         ###   ########.fr        #
+#    Updated: 2018/01/06 21:15:17 by dlavaury         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = libftprintf.a
 
 GCC = gcc
 
-#FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
 
 HEADER = -I Includes
 
@@ -63,9 +63,9 @@ $(NAME): $(OBJ)
 	@echo "\n$(_CYAN)$(NAME)$(_END) $(_GREEN)edited$(_END)"
 
 %.o: %.c
-	@printf "%-60b\r" "$(ECHO) Compressing $@"
-#	@$(GCC) $(FLAGS) $(HEADER) -o $@ -c $<
-	@$(GCC) $(HEADER) -o $@ -c $<
+	@printf "%-60b\r" "$(ECHO)Compressing $@"
+	@$(GCC) $(FLAGS) $(HEADER) -o $@ -c $<
+#	@$(GCC) $(HEADER) -o $@ -c $<
 
 clean:
 	@rm -f **/**.o
@@ -80,11 +80,10 @@ re: fclean
 
 go:
 	@clear
-	@make fclean
-	@make all
-	@gcc -o ft_printf main.c $(NAME)
+	@make -j4 re
+	@$(GCC) -o ft_printf main.c $(NAME)
+#	@$(GCC) $(FLAGS) -o ft_printf main.c $(NAME)
 	@./ft_printf
-#	@gcc $(FLAGS) -o ft_printf main.c $(NAME)
 #	@time ./ft_printf
 
 norminette:

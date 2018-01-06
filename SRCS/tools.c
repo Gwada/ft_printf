@@ -6,59 +6,51 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 17:08:44 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/11/09 20:20:38 by dlavaury         ###   ########.fr       */
+/*   Updated: 2018/01/06 14:47:43 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_printf.h"
+#include "ft_printf.h"
 
-size_t	ft_strlen(const char *s)
+size_t					ft_strlen(const char *s)
 {
-	size_t	i;
+	size_t				i;
 
 	i = 0;
 	if (s)
-	   while (s[i])
-		   ++i;
+		while (s[i])
+			++i;
 	return (i);
 }
 
-void	ft_bzero(void *s, size_t n)
+void					ft_bzero(void *s, size_t n)
 {
 	while (n)
 		*((char*)s + n-- - 1) = '\0';
 }
 
-int		ft_atoi_p(const char *nptr)
+int						ft_atoi_p(const char *nptr)
 {
-	int					i;
 	int					num;
 	int					pos_num;
 	unsigned long long	max;
 
-	i = 0;
 	max = 0;
 	num = 0;
 	pos_num = 1;
-	while (nptr[i] == ' ' || (nptr[i] >= 7 && nptr[i] <= 13))
-		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
+	if (*nptr == '-' || *nptr == '+')
+		*nptr++ == '-' ? pos_num = -1 : 0;
+	while (*nptr >= '0' && *nptr <= '9')
 	{
-		if (nptr[i] == '-')
-			pos_num = -1;
-		i++;
-	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
-	{
-		max = max * 10 + nptr[i] - '0';
+		max = max * 10 + *nptr++ - '0';
 		if (max > 9223372036854775807)
 			return ((pos_num == 1) ? -1 : 0);
-		num = num * 10 + nptr[i++] - '0';
+		num = (int)max;
 	}
 	return (num * pos_num);
 }
 
-size_t		ft_wcharlen(wchar_t c)
+size_t					ft_wcharlen(wchar_t c)
 {
 	if ((c <= 0x7F || c <= 0xff) && MB_CUR_MAX >= 1)
 		return (1);
@@ -77,9 +69,9 @@ size_t		ft_wcharlen(wchar_t c)
 	return (0);
 }
 
-size_t		ft_wstrlen(wchar_t *ws)
+size_t					ft_wstrlen(wchar_t *ws)
 {
-	size_t	wstrlen;
+	size_t				wstrlen;
 
 	wstrlen = 0;
 	while (*ws != L'\0')

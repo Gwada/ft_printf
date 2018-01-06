@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 18:44:57 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/12/22 19:46:15 by dlavaury         ###   ########.fr       */
+/*   Updated: 2018/01/06 15:24:47 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void		ft_buffering(t_data *data, const void *s, int len)
 	}
 }
 
-void		ft_error(t_data *data, int	to_remove)
+void		ft_error(t_data *data, int to_remove)
 {
 	data->error = -1;
 	while (to_remove-- && data->i_b)

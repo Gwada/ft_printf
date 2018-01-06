@@ -1,39 +1,50 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/06 14:52:08 by dlavaury          #+#    #+#             */
+/*   Updated: 2018/01/06 21:15:25 by dlavaury         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-void	ft_flags_parser(t_data *data)
+static void	ft_star_gestion(t_data *data)
 {
-	while ((data->i_f = ft_strchri("# +-0*", *data->ft)) >= 0 && *++data->ft)
-		data->B_D |= 1 << data->i_f;
-	if (data->B_D & NEG && !(data->B_D & STAR))
-		data->B_D &= ~ZERO;
-	if (data->B_D & POS)
-		data->B_D &= ~SPACE;
-	if (data->B_D & STAR)
-		ft_star_gestion(data);//
-}
-
-void	ft_star_gestion(t_data *data)
-{
-	data->B_D &= ~STAR;
+	data->bd &= ~STAR;
 	if ((data->i_f = (int)va_arg(data->ap, int)) < 0)
 	{
-		data->B_D |= NEG;
+		data->bd |= NEG;
 		data->i_f *= -1;
 	}
 	else
-		data->B_D &= ~NEG;
-	if (!(data->B_D & PREC))
+		data->bd &= ~NEG;
+	if (!(data->bd & PREC))
 		data->min_s = data->i_f;
 	else
 	{
-		data->prec = data->B_D & NEG ? 0 : data->i_f;//
-		data->B_D = data->i_f ? data->B_D & ~PREC : data->B_D | PREC;//
+		data->prec = data->bd & NEG ? 0 : data->i_f;//
+		data->bd = data->i_f ? data->bd & ~PREC : data->bd | PREC;//
 	}
 }
 
-void	ft_precision_parser(t_data *data)
+void		ft_flags_parser(t_data *data)
 {
-	data->min_s = 0;
+	while ((data->i_f = ft_strchri("# +-0*", *data->ft)) >= 0 && *++data->ft)
+		data->bd |= 1 << data->i_f;
+	if (data->bd & NEG && !(data->bd & STAR))
+		data->bd &= ~ZERO;
+	if (data->bd & POS)
+		data->bd &= ~SPACE;
+	if (data->bd & STAR)
+		ft_star_gestion(data);//
+}
+
+void		ft_precision_parser(t_data *data)
+{
 	if (*data->ft >= '1' && *data->ft <= '9')
 	{
 		data->min_s = MAX(1, ft_atoi_p(data->ft));
@@ -46,34 +57,32 @@ void	ft_precision_parser(t_data *data)
 		data->prec = MAX(ft_atoi_p(data->ft), 0);
 		while (*data->ft >= '0' && *data->ft <= '9')
 			++data->ft;
-		data->B_D |= PREC;
+		data->bd |= PREC;
 	}
 }
 
-void	ft_len_mod_parser(t_data *data)
+void		ft_len_mod_parser(t_data *data)
 {
 	while (42)
 	{
 		if (*data->ft == 'l')
-			data->B_D |= (data->ft[1] == 'l' && ++data->ft) ? LONGX2 : LONG;
+			data->bd |= (data->ft[1] == 'l' && ++data->ft) ? LONGX2 : LONG;
 		else if (*data->ft == 'h')
-			data->B_D |= (data->ft[1] == 'h' && ++data->ft) ? SHORTX2 : SHORT;
+			data->bd |= (data->ft[1] == 'h' && ++data->ft) ? SHORTX2 : SHORT;
 		else if (*data->ft == 'j')
-			data->B_D |= INTMAX;
+			data->bd |= INTMAX;
 		else if (*data->ft == 'z')
-			data->B_D |= SIZE_T;
+			data->bd |= SIZE_T;
 		/*else if (*data->ft == 'q')//
-			data->B_D |= LONGX2;*///
+		  data->B_D |= LONGX2;*///
 		else
 			break ;
 		++data->ft;
 	}
 }
 
-void	ft_put_type(t_data *data)
+void		ft_put_type(t_data *data)
 {
-	//printf("|in put type c = ->%c<-\n", *data->ft);//
-	//printf("[%c][*%c][%c][%c]\n",*(data->ft-1),*data->ft,*(data->ft+1),*(data->ft+2));//
 	if (ft_strchr("sS", *data->ft))
 		ft_set_string(data);
 	else if (ft_strchr("cC", *data->ft))
@@ -92,6 +101,4 @@ void	ft_put_type(t_data *data)
 		ft_set_base(data);
 	else
 		ft_no_types(data);
-	//printf("[%c][*%c][%c]\n",*(data->ft-1),*data->ft,*(data->ft+1));//
-//	printf("<- end put type |\n");//
 }

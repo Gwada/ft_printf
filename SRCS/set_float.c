@@ -1,8 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   set_float.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/06 14:48:10 by dlavaury          #+#    #+#             */
+/*   Updated: 2018/01/06 15:14:07 by dlavaury         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-static	int	ft_dtoa_buf(t_data *d, double n, long n2)
+static int		ft_dtoa_buf(t_data *d, double n, long n2, int len)
 {
-	int			len;
 	int			c_n;
 	char		*nb;
 
@@ -22,9 +33,9 @@ static	int	ft_dtoa_buf(t_data *d, double n, long n2)
 		nb[len - ++c_n] = n2 % 10 + '0';
 		n2 /= 10;
 	}
-	((d->B_D & PREC && d->B_D & ZERO) || (d->B_D & SPACE)) ? *nb = ' ' : 0;
+	((d->bd & PREC && d->bd & ZERO) || (d->bd & SPACE)) ? *nb = ' ' : 0;
 	n < 0 ? *nb = '-' : 0;
-	(d->B_D & POS && n >= 0) ? *nb = '+' : 0;
+	(d->bd & POS && n >= 0) ? *nb = '+' : 0;
 	ft_buffering(d, nb, d->c_len);
 	free(nb);
 	return (1);
@@ -37,13 +48,13 @@ void			ft_set_float(t_data *data, double n)
 	long		tmp;
 	double		dcl;
 
-	data->B_D & ZERO ? data->prec = data->min_s : 0;
-	!(data->B_D & PREC) ? data->prec = 6 : 0;
+	data->bd & ZERO ? data->prec = data->min_s : 0;
+	!(data->bd & PREC) ? data->prec = 6 : 0;
 	len = data->prec > 0 ? 1 : 0;
 	tmp = n < 0 ? -n : n;
 	while (tmp && ++len)
 		tmp /= 10;
-	data->B_D & ZERO ? data->prec = data->min_s : 0;
+	data->bd & ZERO ? data->prec = data->min_s : 0;
 	data->c_len = data->prec + len + (n < 0 ? 1 : 0);
 	data->filler = data->c_len > data->min_s ? 0 : data->min_s - data->c_len;
 	dcl = (n < 0.0f) ? (-n - (long)-n) : (n - (long)n);
@@ -53,7 +64,7 @@ void			ft_set_float(t_data *data, double n)
 	dcl = ((long)dcl % 10 > 4) ? (dcl / 10 + 1) : dcl / 10;
 	n2 = (int)dcl;
 	ft_filler(data, 0);
-	if (!(ft_dtoa_buf(data, n, n2)))
+	if (!(ft_dtoa_buf(data, n, n2, 0)))
 		return (ft_error(data, 0));
 	ft_filler(data, 1);
 }

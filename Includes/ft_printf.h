@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 15:53:27 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/12/22 19:46:35 by dlavaury         ###   ########.fr       */
+/*   Updated: 2018/01/06 21:15:20 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,9 @@
 # define ULI		unsigned long int
 # define USI		unsigned short int
 # define UC			unsigned char
-# define BASE8		(n || d->B_D & POINTEUR) && d->B_D & DIESE && b == 8 && !ext
-# define BASE16		(n || d->B_D & POINTEUR) && d->B_D & DIESE && b == 16
+# define BASE8		(n || d->bd & POINTEUR) && d->bd & DIESE && b == 8 && !ext
+# define BASE16		(n || d->bd & POINTEUR) && d->bd & DIESE && b == 16
+# define VMAJ		d->bd & MAJ ? "0X" : "0x"
 
 /*
 **	*** STRUCTURES ***
@@ -72,10 +73,10 @@ typedef struct		s_data
 	char			*ft;
 	char			buf[BUFF_SIZE + 1];
 	char			u_c[4];
-	short			B_D;
+	short			bd;
 	va_list			ap;
 	unsigned		car;
-	int		c_len;
+	int				c_len;
 	long long int	len;
 }					t_data;
 
@@ -93,7 +94,6 @@ int					ft_printf(const char *format, ...);
 int					ft_dprintf(int fd, const char *format, ...);
 void				ft_attribuate(t_data *data);
 void				ft_flags_parser(t_data *data);
-void				ft_star_gestion(t_data *data);
 void				ft_precision_parser(t_data *data);
 void				ft_len_mod_parser(t_data *data);
 void				ft_put_type(t_data *data);
@@ -118,4 +118,4 @@ void				ft_filler(t_data *data, char opt);
 void				ft_buffering(t_data *data, const void *s, int len);
 void				ft_error(t_data *data, int to_remove);
 
-# endif
+#endif

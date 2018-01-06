@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/17 20:12:25 by dlavaury          #+#    #+#             */
-/*   Updated: 2017/12/21 09:28:58 by dlavaury         ###   ########.fr       */
+/*   Updated: 2018/01/06 21:15:06 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,4 @@ void	ft_no_types(t_data *data)
 		ft_buffering(data, data->ft, 1);
 	if (data->filler > 0)
 		ft_filler(data, 1);
-	//++data->ft;
 }

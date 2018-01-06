@@ -1,16 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   set_base.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/06 14:28:05 by dlavaury          #+#    #+#             */
+/*   Updated: 2018/01/06 15:15:48 by dlavaury         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static	char			ft_nb_bit(t_data *data)
 {
-	if (data->B_D & LONGX2 || *data->ft == 'B' || data->B_D & INTMAX)
+	if (data->bd & LONGX2 || data->bd & INTMAX)
 		return ((char)sizeof(long long));
-	if (data->B_D & LONG)
+	if (data->bd & LONG || *data->ft == 'B')
 		return ((char)sizeof(long));
-	else if (data->B_D & SIZE_T)
+	else if (data->bd & SIZE_T)
 		return ((char)sizeof(size_t));
-	else if (data->B_D & SHORT)
+	else if (data->bd & SHORT)
 		return ((char)sizeof(short));
-	else if (data->B_D & SHORTX2)
+	else if (data->bd & SHORTX2)
 		return ((char)sizeof(char));
 	return ((char)sizeof(int));
 }
@@ -35,18 +47,18 @@ void					ft_set_base(t_data *data)
 {
 	ULX2I				n;
 
-	if ((data->B_D & LONGX2) || (data->B_D & INTMAX) || (*data->ft == 'B'))
+	if ((data->bd & LONGX2) || (data->bd & INTMAX) || (*data->ft == 'B'))
 		n = (ULX2I)va_arg(data->ap, ULX2I);
-	else if (data->B_D & LONG)
+	else if (data->bd & LONG)
 		n = (ULX2I)va_arg(data->ap, ULI);
-	else if (data->B_D & SIZE_T)
+	else if (data->bd & SIZE_T)
 		n = (ULX2I)va_arg(data->ap, size_t);
-	else if (data->B_D & SHORT)
-		n = (ULX2I)((USI)va_arg(data->ap, int));
-	else if (data->B_D & SHORTX2)
-		n = (ULX2I)((unsigned char)va_arg(data->ap, int));
+	else if (data->bd & SHORT)
+		n = (ULX2I)((USI)va_arg(data->ap, unsigned int));
+	else if (data->bd & SHORTX2)
+		n = (ULX2I)((unsigned char)va_arg(data->ap, unsigned int));
 	else
-		n = (ULX2I)va_arg(data->ap, int);
+		n = (ULX2I)va_arg(data->ap, unsigned int);
 	if (ft_strchr("bB", *data->ft))
 		ft_put_bin_p(data, n);
 	else
