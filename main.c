@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 17:17:34 by dlavaury          #+#    #+#             */
-/*   Updated: 2018/01/06 21:15:12 by dlavaury         ###   ########.fr       */
+/*   Updated: 2018/01/07 20:50:20 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "./Includes/ft_printf.h"
 
 #define STR		STR1
-#define STR1	"|%|"
+#define STR1	"%#.o %#.0", 0, 310
 #define STR2	"|% 20.12ld et % 05D% 4.8hi !|", 0x11ffaa147, 24, (short)-2345
 #define STR3	"|%        00%Z|"
 

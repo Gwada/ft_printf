@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 14:31:19 by dlavaury          #+#    #+#             */
-/*   Updated: 2018/01/06 21:06:15 by dlavaury         ###   ########.fr       */
+/*   Updated: 2018/01/07 20:50:14 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ void			ft_itoa_p(t_data *d, long long n, int len)
 	while (tmp && ++len)
 		tmp /= 10;
 		//printf ("prec = %d\tmin_s = %d\tc_len = %d\tlen = %d\n",d->prec, d->min_s, d->c_len, len);//
+	//d->prec > len ? len = d->prec : 0;
 	d->bd & ZERO && !(d->bd & POS) ? d->prec = d->min_s : 0;//
 		//d->bd & ZERO && d->bd & POS ? d->prec = d->min_s : 0;//
-		//printf ("prec = %d\n",d->prec);//
+		//printif ("prec = %d\n",d->prec);//
 		//d->bd & ZERO && d->bd & POS ? printf ("1 test\n") :0;//
 		//d->bd & ZERO && d->bd & POS && !(d->bd & PREC) ? d->prec = d->min_s : 0;
 	d->bd & ZERO && d->bd & POS && d->bd & PREC ? (d->bd &= ~ZERO) : 0;

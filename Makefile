@@ -6,7 +6,7 @@
 #    By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/13 16:12:24 by dlavaury          #+#    #+#              #
-#    Updated: 2018/01/06 21:15:17 by dlavaury         ###   ########.fr        #
+#    Updated: 2018/01/07 20:50:25 by dlavaury         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,6 @@ SOURCES =	tools.c \
 			strchr.c \
 			itoa_p.c \
 			ft_printf.c \
-			ft_attribuate.c \
 			parsing.c \
 			set_car.c \
 			set_string.c \

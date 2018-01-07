@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 14:52:08 by dlavaury          #+#    #+#             */
-/*   Updated: 2018/01/06 21:15:25 by dlavaury         ###   ########.fr       */
+/*   Updated: 2018/01/07 20:50:38 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ void		ft_put_type(t_data *data)
 {
 	if (ft_strchr("sS", *data->ft))
 		ft_set_string(data);
-	else if (ft_strchr("cC", *data->ft))
-		ft_set_car(data, va_arg(data->ap, int));
+	else if (ft_strchr("%cC", *data->ft))
+		ft_set_car(data);
 	else if (*data->ft == 'n')
 		ft_set_len(data);
 	else if (ft_strchr("dDi", *data->ft))
