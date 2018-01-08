@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 15:53:27 by dlavaury          #+#    #+#             */
-/*   Updated: 2018/01/07 20:50:28 by dlavaury         ###   ########.fr       */
+/*   Updated: 2018/01/08 19:29:29 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@
 # define BASE8		(n || d->bd & POINTEUR) && d->bd & DIESE && b == 8 && !ext
 # define BASE16		(n || d->bd & POINTEUR) && d->bd & DIESE && b == 16
 # define VMAJ		d->bd & MAJ ? "0X" : "0x"
+# define ERROR		strerror
 
 /*
 **	*** STRUCTURES ***
@@ -105,13 +106,14 @@ void				ft_putstr_p(t_data *data);
 void				ft_set_car(t_data *data);
 void				ft_putwchar_p(t_data *data, wchar_t c, int size, int n_b);
 void				ft_set_signed(t_data *data);
-void				ft_itoa_p(t_data *data, long long n, int len);
-void				ft_itoa_buf(t_data *data, ULX2I n, int b, char *nb);
+void				ft_itoa_p(t_data *data, long long n, ULX2I len);
+void				ft_itoa_buf(t_data *data, ULX2I n, int b, int len);
 void				ft_itoa_base_p(t_data *data, ULX2I n, int b);
 void				ft_set_float(t_data *data, double n);
 void				ft_set_error(t_data *data);
 void				ft_set_adress(t_data *data);
 void				ft_set_base(t_data *data);
+void				ft_put_bin_p(t_data *data, ULX2I n);
 void				ft_set_len(t_data *data);
 void				ft_no_types(t_data *data);
 void				ft_filler(t_data *data, char opt);

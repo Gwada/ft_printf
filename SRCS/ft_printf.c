@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:23:00 by dlavaury          #+#    #+#             */
-/*   Updated: 2018/01/07 20:44:40 by dlavaury         ###   ########.fr       */
+/*   Updated: 2018/01/08 19:29:17 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void		ft_attribuate(t_data *data)
 	data->min_s = 0;
 	if (!*data->ft && !(data->i = 0))
 		return ;
-	while (ft_strchr(".0123456789# +-*hjlz", *data->ft))
+	while (ft_strchr(".0123456789# +-*hjlqz", *data->ft))
 	{
 		ft_flags_parser(data);
 		ft_precision_parser(data);

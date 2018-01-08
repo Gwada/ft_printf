@@ -6,7 +6,7 @@
 #    By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/13 16:12:24 by dlavaury          #+#    #+#              #
-#    Updated: 2018/01/07 20:50:25 by dlavaury         ###   ########.fr        #
+#    Updated: 2018/01/08 19:29:32 by dlavaury         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,12 @@ GCC = gcc
 
 FLAGS = -Wall -Wextra -Werror
 
+HARDFLAGS = -Weverything
+
 HEADER = -I Includes
 
 SOURCES =	tools.c \
 			strchr.c \
-			itoa_p.c \
 			ft_printf.c \
 			parsing.c \
 			set_car.c \
@@ -28,7 +29,7 @@ SOURCES =	tools.c \
 			set_nbr.c \
 			set_float.c \
 			set_len.c \
-			set_base.c \
+			set_bin.c \
 			set_error.c \
 			set_adress.c \
 			ft_no_types.c \
@@ -64,7 +65,7 @@ $(NAME): $(OBJ)
 %.o: %.c
 	@printf "%-60b\r" "$(ECHO)Compressing $@"
 	@$(GCC) $(FLAGS) $(HEADER) -o $@ -c $<
-#	@$(GCC) $(HEADER) -o $@ -c $<
+	@$(GCC) $(HEADER) -o $@ -c $<
 
 clean:
 	@rm -f **/**.o
@@ -82,6 +83,7 @@ go:
 	@make -j4 re
 	@$(GCC) -o ft_printf main.c $(NAME)
 #	@$(GCC) $(FLAGS) -o ft_printf main.c $(NAME)
+#	@$(GCC) $(HARDFLAGS) -o ft_printf main.c $(NAME)
 	@./ft_printf
 #	@time ./ft_printf
 

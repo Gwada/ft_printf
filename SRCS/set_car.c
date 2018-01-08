@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/21 10:23:24 by dlavaury          #+#    #+#             */
-/*   Updated: 2018/01/07 19:56:24 by dlavaury         ###   ########.fr       */
+/*   Updated: 2018/01/08 18:24:43 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void		ft_putwchar_p(t_data *data, wchar_t c, int size, int n_b)
 {
 	if (n_b <= size && n_b <= MB_CUR_MAX)
 	{
-		ft_bzero(data->u_c, 4);
 		if (n_b == 1)
 			data->u_c[0] = (char)c;
 		else
@@ -48,14 +47,10 @@ void		ft_set_car(t_data *data)
 	data->c_len = (data->bd & LONG || data->bd & LONGX2) ? ft_wcharlen(c) : 1;
 	if ((!data->c_len || c < 0) && data->bd & LONG)
 		return (ft_error(data, data->i));
-	(data->filler = data->min_s - data->c_len) < 0 ? data->filler = 0 : 0;
+	if ((data->filler = data->min_s - data->c_len) < 0)
+		data->filler = 0;
 	ft_filler(data, 0);
-	if (*data->ft == '%')
-	{
-		ft_buffering (data, data->ft++, 1);
-		data->error = 2;
-	}
-	else
+	*data->ft == '%' && (data->error = 2) ? ft_buffering(data, data->ft++, 1) :
 		ft_putwchar_p(data, c, data->c_len, data->c_len);
 	ft_filler(data, 1);
 }

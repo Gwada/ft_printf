@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 14:52:08 by dlavaury          #+#    #+#             */
-/*   Updated: 2018/01/07 20:50:38 by dlavaury         ###   ########.fr       */
+/*   Updated: 2018/01/08 19:29:22 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static void	ft_star_gestion(t_data *data)
 		data->min_s = data->i_f;
 	else
 	{
-		data->prec = data->bd & NEG ? 0 : data->i_f;//
-		data->bd = data->i_f ? data->bd & ~PREC : data->bd | PREC;//
+		data->prec = data->bd & NEG ? 0 : data->i_f;
+		data->bd = data->i_f ? data->bd & ~PREC : data->bd | PREC;
 	}
 }
 
@@ -40,7 +40,7 @@ void		ft_flags_parser(t_data *data)
 	if (data->bd & POS)
 		data->bd &= ~SPACE;
 	if (data->bd & STAR)
-		ft_star_gestion(data);//
+		ft_star_gestion(data);
 }
 
 void		ft_precision_parser(t_data *data)
@@ -73,8 +73,8 @@ void		ft_len_mod_parser(t_data *data)
 			data->bd |= INTMAX;
 		else if (*data->ft == 'z')
 			data->bd |= SIZE_T;
-		/*else if (*data->ft == 'q')//
-		  data->B_D |= LONGX2;*///
+		else if (*data->ft == 'q')
+			data->bd |= LONGX2;
 		else
 			break ;
 		++data->ft;
