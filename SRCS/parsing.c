@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 14:52:08 by dlavaury          #+#    #+#             */
-/*   Updated: 2018/01/08 19:29:22 by dlavaury         ###   ########.fr       */
+/*   Updated: 2018/01/09 20:08:17 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,24 +81,24 @@ void		ft_len_mod_parser(t_data *data)
 	}
 }
 
-void		ft_put_type(t_data *data)
+void		ft_put_type(t_data *d)
 {
-	if (ft_strchr("sS", *data->ft))
-		ft_set_string(data);
-	else if (ft_strchr("%cC", *data->ft))
-		ft_set_car(data);
-	else if (*data->ft == 'n')
-		ft_set_len(data);
-	else if (ft_strchr("dDi", *data->ft))
-		ft_set_signed(data);
-	else if (*data->ft == 'm')
-		ft_set_error(data);
-	else if (*data->ft == 'p')
-		ft_set_adress(data);
-	else if (ft_strchr("fF", *data->ft))
-		ft_set_float(data, (double)va_arg(data->ap, double));
-	else if (ft_strchr("bBoOuUxX", *data->ft))
-		ft_set_base(data);
+	if (ft_strchr("sS", *d->ft))
+		d->bd & LONG || d->bd & LONGX2 ? ft_putwstr_p(d) : ft_putstr_p(d);
+	else if (ft_strchr("%cC", *d->ft))
+		ft_set_car(d);
+	else if (*d->ft == 'n')
+		ft_set_len(d);
+	else if (ft_strchr("dDi", *d->ft))
+		ft_set_signed(d);
+	else if (*d->ft == 'm')
+		ft_set_error(d);
+	else if (*d->ft == 'p')
+		ft_set_adress(d);
+	else if (ft_strchr("fF", *d->ft))
+		ft_set_float(d, (double)va_arg(d->ap, double));
+	else if (ft_strchr("bBoOuUxX", *d->ft))
+		ft_set_base(d);
 	else
-		ft_no_types(data);
+		ft_no_types(d);
 }

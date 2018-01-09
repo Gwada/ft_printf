@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/21 10:23:24 by dlavaury          #+#    #+#             */
-/*   Updated: 2018/01/08 18:24:43 by dlavaury         ###   ########.fr       */
+/*   Updated: 2018/01/09 13:20:50 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,30 @@
 
 void		ft_putwchar_p(t_data *data, wchar_t c, int size, int n_b)
 {
+	char	wc[4];
+
 	if (n_b <= size && n_b <= MB_CUR_MAX)
 	{
 		if (n_b == 1)
-			data->u_c[0] = (char)c;
+			wc[0] = (char)c;
 		else
 		{
 			if (n_b == 2)
-				data->u_c[0] = ((c & (0x1F << 6)) >> 6) | 0xC0;
+				wc[0] = ((c & (0x1F << 6)) >> 6) | 0xC0;
 			else
 			{
 				if (n_b == 3)
-					data->u_c[0] = ((c >> 12) & 0x0F) | 0xE0;
+					wc[0] = ((c >> 12) & 0x0F) | 0xE0;
 				else
 				{
-					data->u_c[0] = ((c >> 18) & 7) | 0xF0;
-					data->u_c[1] = ((c >> 12) & 0x3F) | 0x80;
+					wc[0] = ((c >> 18) & 7) | 0xF0;
+					wc[1] = ((c >> 12) & 0x3F) | 0x80;
 				}
-				data->u_c[n_b - 2] = ((c >> 6) & 0x3F) | 0x80;
+				wc[n_b - 2] = ((c >> 6) & 0x3F) | 0x80;
 			}
-			data->u_c[n_b - 1] = (c & 0x3F) | 0x80;
+			wc[n_b - 1] = (c & 0x3F) | 0x80;
 		}
-		ft_buffering(data, data->u_c, n_b);
+		ft_buffering(data, wc, n_b);
 	}
 }
 

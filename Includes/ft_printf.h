@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 15:53:27 by dlavaury          #+#    #+#             */
-/*   Updated: 2018/01/09 10:32:40 by dlavaury         ###   ########.fr       */
+/*   Updated: 2018/01/09 20:07:54 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ typedef struct		s_data
 	int				error;
 	char			*ft;
 	char			buf[BUFF_SIZE + 1];
-	char			u_c[4];
 	short			bd;
 	va_list			ap;
 	unsigned		car;
@@ -98,7 +97,6 @@ void				ft_flags_parser(t_data *data);
 void				ft_precision_parser(t_data *data);
 void				ft_len_mod_parser(t_data *data);
 void				ft_put_type(t_data *data);
-void				ft_set_string(t_data *data);
 size_t				ft_wcharlen(wchar_t c);
 size_t				ft_wstrlen(wchar_t *ws);
 void				ft_putwstr_p(t_data *data);
@@ -106,7 +104,7 @@ void				ft_putstr_p(t_data *data);
 void				ft_set_car(t_data *data);
 void				ft_putwchar_p(t_data *data, wchar_t c, int size, int n_b);
 void				ft_set_signed(t_data *data);
-void				ft_itoa_p(t_data *data, long long n, ULX2I len);
+void				ft_itoa_p(t_data *data, long long n);
 void				ft_itoa_buf(t_data *data, ULX2I n, int b, int len);
 void				ft_itoa_base_p(t_data *data, ULX2I n, int b);
 void				ft_set_float(t_data *data, double n);

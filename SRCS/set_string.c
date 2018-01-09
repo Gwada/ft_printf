@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/21 12:38:47 by dlavaury          #+#    #+#             */
-/*   Updated: 2018/01/07 15:28:34 by dlavaury         ###   ########.fr       */
+/*   Updated: 2018/01/09 20:08:08 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,87 +27,75 @@ void			ft_putstr_p(t_data *data)
 	ft_filler(data, 1);
 }
 
-/*static	void	init_to_remove(t_data *d, int wlen){
+/*static	void	init(t_data *d, int wlen){
 	printf("--- init ---\n");//
 	printf("\twlen\t\t= %d\n", wlen);//
-	printf("\tprecision\t= %d\n", d->prec);//
 	printf("\tchamp min\t= %d\n", d->min_s);//
-	printf("--- end init ---\n\n--- set ---\n");//
+	printf("\tprecision\t= %d\n\n", d->prec);//
 }
-static	void	set_to_remove(t_data *d, int wlen){
+static	void	set(t_data *d, int wlen){
+	printf("--- set ---\n");//
 	printf("\tMIN -> wlen\t= %d\n", wlen);//
-	printf("\tMAX -> filler\t= %d\n", d->filler);//
-	printf("--- end set ---\n\n");//
+	printf("\tMAX -> filler\t= %d\n\n", d->filler);//
 }
-static	void	while_to_remove(t_data *d, int i, int c_len, int wlen){
-	printf("%d)\tc_len = %d\t", i, c_len);//
-	printf("min_s = %d\t", d->min_s);//
-	printf("filler = %d\t", d->filler);//
+static	void	while_to_remove(t_data *d, int i, int c_len, int wlen, wchar_t ws){
+	printf ("--- while ---\n");
+	printf("%d) \t| %C |\n", i, ws);
+	printf("\twc_len = %d\t", c_len);//
+	//printf("champ min = %d\t", d->min_s);//
 	printf("wlen = %d\t", wlen);//
-	printf("prec = %d\n", d->prec);//
+	printf("precision = %d\n\n", d->prec);//
 }
-static	void	end_while(t_data *d, int len, int c_len){
-	printf ("\t->ajout car");
-	printf("\tlen = %d\n", len);//
-	printf("---------------------------------------------------------------\n");//
+static	void	end_while(t_data *d, int c_len, int wlen){
+	printf ("\t->ajout car\n");
+	printf("\tc_len = %d\t", c_len);//
+	//printf("champ min = %d\t", d->min_s);//
+	printf("wlen = %d\t", wlen - c_len);//
+	printf("precision = %d\n\n", d->prec);//
+	printf("--------------------------------------------------------------- end\n");//
 }
-static	void	verif_error(t_data *d, int c_len, wchar_t *ws, int wlen){
+static	void	verif_error(t_data *d, int c_len, wchar_t ws, int wlen){
 	printf("--- verif error ---\n");//
 	printf("\tdata->prec = %d\t", d->prec);//
 	printf("c_len = %d\t", c_len);//
-	printf("ws = %d\t", *ws);//
-	printf("wlen = %d\n", wlen);//
+	printf("ws = %d\t\t", ws);//
+	printf("wcar = %d\n", wlen);//
 	printf("--- end verif error ---\n");//
-}*/
-
-void			ft_putwstr_p(t_data *d)
+}
+*/void			ft_putwstr_p(t_data *d)
 {
-//																	printf("--- start ---\n");//
 	int			len;
 	int			wlen;
 	int			c_len;
 	wchar_t		*ws;
 
 	if (!(ws = va_arg(d->ap, wchar_t*)))
-		return(ft_buffering(d, "(null)", 6));//
+		ws = L"(null)";//
 	wlen = ft_wstrlen(ws);
-//																	init_to_remove(d, wlen);//
+//															init(d, wlen);//
 	d->bd & PREC ? wlen = MIN(d->prec, wlen) : 0;
 	d->filler = MAX(d->min_s - wlen, 0);
 	d->bd = d->min_s > d->prec ? d->bd & ~PREC : d->bd | PREC;
-//																	set_to_remove(d, wlen);//
+//															set(d, wlen);//
 	len = 0;
 	c_len = 0;
 	ft_filler(d, 0);
-//																	printf("--- while ---\n");//
-	while (*ws && (wlen -= c_len) >= 0)
+//															int i = 0;
+//															printf("\t--- start while ---\n");//
+	while ((d->car = *ws++) && (wlen -= c_len) >= 0)
 	{
-		c_len = ft_wcharlen(*ws);
-//																	while_to_remove(d, i++, c_len, wlen);//
-		if (c_len > wlen)
-		{
-			d->filler += wlen;
-//																	printf ("\t->break data->filler = %d\n", d->filler);//
-			break;
-		}
+		c_len = ft_wcharlen(d->car);
+//															while_to_remove(d, ++i, c_len, wlen, d->car);
+		c_len <= wlen ? ft_putwchar_p(d, d->car, wlen, c_len) : 0;
 		len += c_len;
-		if (!c_len && ((*ws && wlen) || (d->prec > wlen)))
+		if ((!c_len && wlen) || (!c_len && d->prec > len))
 		{
-//																	verif_error(d, c_len, ws, wlen);
-			return(ft_error(d, d->min_s - len + c_len));
+//															verif_error(d, c_len, d->car, wlen);
+			return(ft_error(d, d->i_b + len));
 		}
-		ft_putwchar_p(d, *ws, wlen, c_len);
-		c_len ? ++ws : 0;
-//																	end_while(d, len, c_len);
+//															end_while(d, c_len, wlen);
 	}
-//	printf("--- end boucle ---\n\ndata->filler = %d\n--- final end ---\n\n", d->filler);//
+	c_len > wlen ? d->filler += wlen : 0;
+//	printf("\t--- end boucle ---\n\ndata->filler = %d\n--- final end ---\n\n", d->filler);//
 	ft_filler(d, 1);
-}
-
-void		ft_set_string(t_data *data)
-{
-	if (data->bd & LONG || data->bd & LONGX2)
-		ft_putwstr_p(data);
-	else
-		ft_putstr_p(data);
 }

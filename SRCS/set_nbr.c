@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 14:30:24 by dlavaury          #+#    #+#             */
-/*   Updated: 2018/01/08 18:20:03 by dlavaury         ###   ########.fr       */
+/*   Updated: 2018/01/09 10:59:34 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void			ft_set_signed(t_data *data)
 		nbr = (long long)((char)va_arg(data->ap, int));
 	else
 		nbr = (long long)va_arg(data->ap, int);
-	ft_itoa_p(data, nbr, 0);
+	ft_itoa_p(data, nbr);
 }
 
 void			ft_set_base(t_data *data)
@@ -53,18 +53,19 @@ void			ft_set_base(t_data *data)
 		ft_itoa_base_p(data, n, (ft_strchri_up("ou..x", *data->ft) + 4) << 1);
 }
 
-void			ft_itoa_p(t_data *d, long long n, ULX2I len)
+void			ft_itoa_p(t_data *d, long long n)
 {
 	char		num;
 	ULX2I		tmp;
 
+	d->c_len = 0;
 	tmp = n < 0 ? -n : n;
-	while (tmp && ++len)
+	while (tmp && ++d->c_len)
 		tmp /= 10;
-	d->bd & ZERO && !(d->bd & POS) ? d->prec = d->min_s : 0;
-	d->bd & ZERO && d->bd & POS && d->bd & PREC ? (d->bd &= ~ZERO) : 0;
+	d->bd & ZERO && !(d->bd & PREC) ? d->prec = d->min_s : 0;
+	d->bd & ZERO && d->bd & PREC && d->bd & PREC ? (d->bd &= ~ZERO) : 0;
 	((n < 0 || d->bd & POS || d->bd & SPACE) && d->bd & ZERO) ? --d->prec : 0;
-	d->c_len = MAX(len, d->prec);
+	d->c_len = MAX(d->c_len, d->prec);
 	(n < 0 || d->bd & POS || d->bd & SPACE) ? --d->min_s : 0;
 	if ((d->filler = d->min_s - d->c_len) < 0)
 		d->filler = 0;
