@@ -6,21 +6,19 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 14:48:10 by dlavaury          #+#    #+#             */
-/*   Updated: 2018/01/06 15:14:07 by dlavaury         ###   ########.fr       */
+/*   Updated: 2018/01/09 10:32:35 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int		ft_dtoa_buf(t_data *d, double n, long n2, int len)
+static void		ft_dtoa_buf(t_data *d, double n, long n2, int len)
 {
 	int			c_n;
-	char		*nb;
+	char		nb[len + 1];
 
 	len = d->c_len - d->prec - 1;
 	c_n = d->c_len - len - 1;
-	if (!(nb = (char*)malloc(sizeof(char) * d->c_len + 1)))
-		return (0);
 	while (c_n)
 	{
 		nb[len + c_n--] = n2 % 10 + '0';
@@ -37,8 +35,6 @@ static int		ft_dtoa_buf(t_data *d, double n, long n2, int len)
 	n < 0 ? *nb = '-' : 0;
 	(d->bd & POS && n >= 0) ? *nb = '+' : 0;
 	ft_buffering(d, nb, d->c_len);
-	free(nb);
-	return (1);
 }
 
 void			ft_set_float(t_data *data, double n)
@@ -64,7 +60,6 @@ void			ft_set_float(t_data *data, double n)
 	dcl = ((long)dcl % 10 > 4) ? (dcl / 10 + 1) : dcl / 10;
 	n2 = (int)dcl;
 	ft_filler(data, 0);
-	if (!(ft_dtoa_buf(data, n, n2, 0)))
-		return (ft_error(data, 0));
+	ft_dtoa_buf(data, n, n2, data->c_len);
 	ft_filler(data, 1);
 }
