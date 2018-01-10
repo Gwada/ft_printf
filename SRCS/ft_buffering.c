@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 18:44:57 by dlavaury          #+#    #+#             */
-/*   Updated: 2018/01/09 15:38:59 by dlavaury         ###   ########.fr       */
+/*   Updated: 2018/01/10 18:58:54 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,5 @@ void		ft_error(t_data *data, int to_remove)
 		data->i--;
 	}
 	data->len = -1;
+	//printf ("%d ->i\n", data->i);
 }

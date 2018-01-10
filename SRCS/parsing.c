@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 14:52:08 by dlavaury          #+#    #+#             */
-/*   Updated: 2018/01/09 20:08:17 by dlavaury         ###   ########.fr       */
+/*   Updated: 2018/01/10 17:04:59 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,11 @@ void		ft_len_mod_parser(t_data *data)
 
 void		ft_put_type(t_data *d)
 {
+//	printf("\t*put\tc\t= %c\n", *d->ft);
 	if (ft_strchr("sS", *d->ft))
 		d->bd & LONG || d->bd & LONGX2 ? ft_putwstr_p(d) : ft_putstr_p(d);
-	else if (ft_strchr("%cC", *d->ft))
-		ft_set_car(d);
+	else if (ft_strchr("cC", *d->ft))
+		ft_set_car(d, va_arg(d->ap, wchar_t));
 	else if (*d->ft == 'n')
 		ft_set_len(d);
 	else if (ft_strchr("dDi", *d->ft))

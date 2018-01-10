@@ -6,7 +6,7 @@
 #    By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/13 16:12:24 by dlavaury          #+#    #+#              #
-#    Updated: 2018/01/09 20:08:01 by dlavaury         ###   ########.fr        #
+#    Updated: 2018/01/10 18:48:53 by dlavaury         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME = libftprintf.a
 
 GCC = gcc
 
+#FLAGS = -Wall -Wextra -Werror -Ofast
 FLAGS = -Wall -Wextra -Werror
 
 HARDFLAGS = -Weverything
