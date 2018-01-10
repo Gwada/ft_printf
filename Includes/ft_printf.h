@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 15:53:27 by dlavaury          #+#    #+#             */
-/*   Updated: 2018/01/10 19:23:01 by dlavaury         ###   ########.fr       */
+/*   Updated: 2018/01/10 22:30:14 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ typedef struct		s_data
 {
 	int				i;
 	int				fd;
-	int				i_form;
 	int				prec;
 	int				min_s;
 	int				filler;
@@ -77,7 +76,6 @@ typedef struct		s_data
 	va_list			ap;
 	unsigned		car;
 	int				c_len;
-	char			wchar[4];
 	int				len;
 }					t_data;
 
@@ -100,7 +98,7 @@ void				ft_len_mod_parser(t_data *data);
 void				ft_put_type(t_data *data);
 size_t				ft_wcharlen(wchar_t c);
 size_t				ft_wstrlen(wchar_t *ws);
-void				ft_putwstr_p(t_data *data);
+void				ft_putwstr_p(t_data *data, int len, int wlen);
 void				ft_putstr_p(t_data *data);
 void				ft_set_car(t_data *data, wchar_t c);
 void				ft_putwchar_p(t_data *data, wchar_t c, int size, int n_b);

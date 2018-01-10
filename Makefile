@@ -6,7 +6,7 @@
 #    By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/13 16:12:24 by dlavaury          #+#    #+#              #
-#    Updated: 2018/01/10 18:48:53 by dlavaury         ###   ########.fr        #
+#    Updated: 2018/01/10 22:30:08 by dlavaury         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,9 +82,9 @@ re: fclean
 go:
 	@clear
 	@make -j4 re
-	@$(GCC) -o ft_printf main.c $(NAME)
+#	@$(GCC) -o ft_printf main.c $(NAME)
 #	@$(GCC) $(FLAGS) -o ft_printf main.c $(NAME)
-#	@$(GCC) $(HARDFLAGS) -o ft_printf main.c $(NAME)
+	@$(GCC) $(HARDFLAGS) -o ft_printf main.c $(NAME)
 	@./ft_printf
 #	@time ./ft_printf
 

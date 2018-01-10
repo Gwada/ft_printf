@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 17:17:34 by dlavaury          #+#    #+#             */
-/*   Updated: 2018/01/10 19:33:01 by dlavaury         ###   ########.fr       */
+/*   Updated: 2018/01/10 22:30:18 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,19 @@
 #include <locale.h>
 #include "./Includes/ft_printf.h"
 
-//#define STR	"%15.1S", L"我是一只猫。"
-#define STR	"%---10.5ls", s
+#define STR	"%15.1S", L"我是一只猫。"
+#define STR1	"%---10.5ls", s
 
 int				main(void)
 {
 	wchar_t	s[4];
-	int		results[2] = {0, 0};
+	int		results[2];
 
 	setlocale(LC_ALL, "");
-	s[0] = 0x53, s[1] = 0x3abc, s[2] = 0x81000, s[3] = '\0';
-	//s[0] = 'a', s[1] = 256, s[2] = 'b', s[3] = '\0';
-//	(void)s;
+	s[0] = 0x53;
+	s[1] = 0x3abc;
+	s[2] = 0x81000;
+	s[3] = '\0';
 	printf("/**********/\n");
 	printf("/* printf */\n");
 	printf("/**********/\n");
