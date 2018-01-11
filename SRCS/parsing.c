@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 14:52:08 by dlavaury          #+#    #+#             */
-/*   Updated: 2018/01/10 21:53:24 by dlavaury         ###   ########.fr       */
+/*   Updated: 2018/01/11 22:52:06 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,15 +84,13 @@ void		ft_len_mod_parser(t_data *data)
 void		ft_put_type(t_data *d)
 {
 	if (ft_strchr("sS", *d->ft))
-		d->bd & LONG || d->bd & LONGX2 ? ft_putwstr_p(d, 0, 0) : ft_putstr_p(d);
+		d->bd & LONG ? ft_putwstr_p(d, 0, 0) : ft_putstr_p(d);
 	else if (ft_strchr("cC", *d->ft))
 		ft_set_car(d, va_arg(d->ap, wchar_t));
 	else if (*d->ft == 'n')
 		ft_set_len(d);
 	else if (ft_strchr("dDi", *d->ft))
 		ft_set_signed(d);
-	else if (*d->ft == 'm')
-		ft_set_error(d);
 	else if (*d->ft == 'p')
 		ft_set_adress(d);
 	else if (ft_strchr("fF", *d->ft))

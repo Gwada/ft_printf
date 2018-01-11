@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_dprintf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlavaury <dlavaury@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/14 17:23:00 by dlavaury          #+#    #+#             */
-/*   Updated: 2018/01/11 22:58:22 by dlavaury         ###   ########.fr       */
+/*   Created: 2018/01/11 15:46:10 by dlavaury          #+#    #+#             */
+/*   Updated: 2018/01/11 22:49:20 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_init_printf(t_data *data, const char *s)
+static void	ft_init_printf(t_data *data, const char *s, int fd)
 {
 	ft_bzero(data, sizeof(*data));
 	data->ft = (char*)s;
-	data->fd = 1;
+	data->fd = fd;
 	data->str = NULL;
 }
 
-int			ft_printf(const char *format, ...)
+int			ft_dprintf(int fd, const char *format, ...)
 {
 	t_data	data;
 
-	ft_init_printf(&data, format);
+	ft_init_printf(&data, format, fd);
 	va_start(data.ap, format);
 	while (*data.ft && data.error >= 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 15:53:27 by dlavaury          #+#    #+#             */
-/*   Updated: 2018/01/10 22:30:14 by dlavaury         ###   ########.fr       */
+/*   Updated: 2018/01/11 23:01:24 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # include <string.h>
 
 /*
-**	*** MACCROS ***
+**	*** MASK BINARY DATA ***
 */
 
 # define DIESE		(1 << 0)
@@ -44,9 +44,13 @@
 # define MIN_LEN	(1 << 13)
 # define PREC		(1 << 14)
 # define POINTEUR	(1 << 15)
+
+/*
+** *** TO REDUCE CODE ***
+*/
+
 # define MAX(a, b)	b & ((a - b) >> 31) | a & (~(a - b) >> 31)
 # define MIN(a, b)	a & ((a - b) >> 31) | b & (~(a - b) >> 31)
-# define BUFF_SIZE	512
 # define ULX2I		unsigned long long int
 # define ULI		unsigned long int
 # define USI		unsigned short int
@@ -54,7 +58,38 @@
 # define BASE8		(n || d->bd & POINTEUR) && d->bd & DIESE && b == 8 && !ext
 # define BASE16		(n || d->bd & POINTEUR) && d->bd & DIESE && b == 16
 # define VMAJ		d->bd & MAJ ? "0X" : "0x"
-# define ERROR		strerror
+
+/*
+** *** COLORS ***
+*/
+
+# define EOC		"\033[0m"
+# define BOLD		"\033[1m"
+# define RBOLD		"\033[21m"
+# define DIM		"\033[2m"
+# define RDIM		"\033[22m"
+# define UNDERLINE	"\033[4m"
+# define RUNDERLINE	"\033[24m"
+# define BLINK		"\033[5m"
+# define RBLINK		"\033[25m"
+# define INVERTED	"\033[7m"
+# define RINVERTED	"\033[27m"
+# define HIDDEN		"\033[8m"
+# define RHIDDEN	"\033[28m"
+# define BLACK		"\033[30m"
+# define RED		"\033[31m"
+# define GREEN		"\033[32m"
+# define YELLOW		"\033[33m"
+# define BLUE		"\033[34m"
+# define MAGENTA	"\033[35m"
+# define CYAN		"\033[36m"
+# define WHITE		"\033[37m"
+
+/*
+** *** SET BUFF SIZE ***
+*/
+
+# define BUFF_SIZE	512
 
 /*
 **	*** STRUCTURES ***
@@ -70,6 +105,7 @@ typedef struct		s_data
 	int				i_b;
 	int				i_f;
 	int				error;
+	char			*str;
 	char			*ft;
 	char			buf[BUFF_SIZE + 1];
 	short			bd;
@@ -90,6 +126,7 @@ int					ft_strchri(const char *s, unsigned c);
 int					ft_strchri_up(const char *s, unsigned c);
 size_t				ft_strlen(const char *s);
 int					ft_printf(const char *format, ...);
+int					ft_sprintf(char **str, const char *format, ...);
 int					ft_dprintf(int fd, const char *format, ...);
 void				ft_attribuate(t_data *data);
 void				ft_flags_parser(t_data *data);
@@ -107,13 +144,14 @@ void				ft_itoa_p(t_data *data, long long n);
 void				ft_itoa_buf(t_data *data, ULX2I n, int b, int len);
 void				ft_itoa_base_p(t_data *data, ULX2I n, int b);
 void				ft_set_float(t_data *data, double n);
-void				ft_set_error(t_data *data);
 void				ft_set_adress(t_data *data);
 void				ft_set_base(t_data *data);
 void				ft_put_bin_p(t_data *data, ULX2I n);
 void				ft_set_len(t_data *data);
 void				ft_no_types(t_data *data);
 void				ft_filler(t_data *data, char opt);
+int					ft_join_clr(t_data *data);
+void				ft_set_color(t_data *data, int len);
 void				ft_buffering(t_data *data, const void *s, int len);
 void				ft_error(t_data *data, int to_remove);
 

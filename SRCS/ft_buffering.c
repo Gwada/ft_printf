@@ -3,14 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_buffering.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dlavaury <dlavaury@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/14 18:44:57 by dlavaury          #+#    #+#             */
-/*   Updated: 2018/01/10 21:22:12 by dlavaury         ###   ########.fr       */
+/*   Created: 2018/01/11 16:33:41 by dlavaury          #+#    #+#             */
+/*   Updated: 2018/01/11 21:07:04 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int			ft_join_clr(t_data *data)
+{
+	int		i;
+	int		strlen;
+	int		buflen;
+	char	*new;
+
+	i = -1;
+	strlen = 0;
+	buflen = 0;
+	while (data->str[strlen])
+		++strlen;
+	while (data->buf[buflen])
+		++buflen;
+	if (!(new = malloc(sizeof(char) * (strlen + buflen + 1))))
+		return (0);
+	while (++i < strlen)
+		new[i] = data->str[i];
+	buflen = 0;
+	while (data->buf[buflen])
+		new[i++] = data->buf[buflen++];
+	free(data->str);
+	data->str = new;
+	return (1);
+}
 
 void		ft_buffering(t_data *data, const void *s, int len)
 {
@@ -23,7 +49,13 @@ void		ft_buffering(t_data *data, const void *s, int len)
 	{
 		if (data->i_b == BUFF_SIZE)
 		{
-			write(data->fd, data->buf, BUFF_SIZE);
+			if (!data->str)
+				write(data->fd, data->buf, BUFF_SIZE);
+			else if (data->str && !ft_join_clr(data))
+			{
+				data->error = -1;
+				return ;
+			}
 			ft_bzero(data->buf, BUFF_SIZE);
 			data->i_b = 0;
 		}
