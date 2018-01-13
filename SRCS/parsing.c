@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dlavaury <dlavaury@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/06 14:52:08 by dlavaury          #+#    #+#             */
-/*   Updated: 2018/01/11 22:52:06 by dlavaury         ###   ########.fr       */
+/*   Created: 2018/01/12 09:53:05 by dlavaury          #+#    #+#             */
+/*   Updated: 2018/01/13 15:40:36 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,23 @@ void		ft_flags_parser(t_data *data)
 
 void		ft_precision_parser(t_data *data)
 {
+	int		n1;
+	int		n2;
+
+	n1 = 1;
+	n2 = 0;
 	if (*data->ft >= '1' && *data->ft <= '9')
 	{
-		data->min_s = MAX(1, ft_atoi_p(data->ft));
+		n2 = ft_atoi_p(data->ft);
+		data->min_s = n2 > n1 ? n2 : n1;
 		while (*data->ft >= '0' && *data->ft <= '9')
 			++data->ft;
 	}
 	if (*data->ft == '.')
 	{
 		++data->ft;
-		data->prec = MAX(ft_atoi_p(data->ft), 0);
+		n2 = ft_atoi_p(data->ft);
+		data->prec = n2 > 0 ? n2 : 0;
 		while (*data->ft >= '0' && *data->ft <= '9')
 			++data->ft;
 		data->bd |= PREC;

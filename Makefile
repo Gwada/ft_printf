@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: dlavaury <dlavaury@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/12/13 16:12:24 by dlavaury          #+#    #+#              #
-#    Updated: 2018/01/11 22:53:02 by dlavaury         ###   ########.fr        #
+#    Created: 2018/01/12 09:48:57 by dlavaury          #+#    #+#              #
+#    Updated: 2018/01/13 16:39:50 by dlavaury         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,6 @@ $(NAME): $(OBJ)
 %.o: %.c
 	@printf "%-60b\r" "$(ECHO)Compressing $@"
 	@$(GCC) $(FLAGS) $(HEADER) -o $@ -c $<
-	@$(GCC) $(HEADER) -o $@ -c $<
 
 clean:
 	@rm -f **/**.o
@@ -84,11 +83,7 @@ re: fclean
 go:
 	@clear
 	@make -j3 re
-	@$(GCC) $(FLAGS) -o ft_printf main.c $(NAME)
-#	@$(GCC) $(HARDFLAGS) -o ft_printf main.c $(NAME)
+	@$(GCC) $(HARDFLAGS) -o ft_printf main.c $(NAME)
 	@./ft_printf
-
-norminette:
-	@norminette **/**.[ch]
 
 .PHONY: all re fclean clean

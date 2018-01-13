@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_set_string.c                                    :+:      :+:    :+:   */
+/*   set_string.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dlavaury <dlavaury@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/21 12:38:47 by dlavaury          #+#    #+#             */
-/*   Updated: 2018/01/11 15:04:07 by dlavaury         ###   ########.fr       */
+/*   Created: 2018/01/12 10:02:51 by dlavaury          #+#    #+#             */
+/*   Updated: 2018/01/12 13:18:05 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void			ft_putstr_p(t_data *data)
 	if (!(s = (char*)va_arg(data->ap, unsigned*)))
 		s = "(null)";
 	len = s ? ft_strlen(s) : 6;
-	data->bd & PREC ? len = MIN(data->prec, len) : 0;
+	data->bd & PREC && data->prec < len ? len = data->prec : 0;
 	data->filler = (data->min_s - len) > 0 ? data->min_s - len : 0;
 	ft_filler(data, 0);
 	ft_buffering(data, s, len);
@@ -39,8 +39,8 @@ static void		filler_ws_calculate(t_data *d, wchar_t *ws, int *wlen)
 		else if (d->bd & PREC && *wlen + c_len > d->prec)
 			break ;
 	}
-	d->bd & PREC ? *wlen = MIN(d->prec, *wlen) : 0;
-	d->filler = MAX(d->min_s - *wlen, 0);
+	d->bd & PREC && d->prec < *wlen ? *wlen = d->prec : 0;
+	d->filler = (d->min_s - *wlen > 0) ? d->min_s - *wlen : 0;
 }
 
 void			ft_putwstr_p(t_data *d, int len, int wlen)
@@ -53,7 +53,7 @@ void			ft_putwstr_p(t_data *d, int len, int wlen)
 		ws = L"(null)";
 	filler_ws_calculate(d, ws, &wlen);
 	wlen = ft_wstrlen(ws);
-	d->bd & PREC ? wlen = MIN(d->prec, wlen) : 0;
+	d->bd & PREC && d->prec < wlen ? wlen = d->prec : 0;
 	d->bd = d->min_s > d->prec ? d->bd & ~PREC : d->bd | PREC;
 	ft_filler(d, 0);
 	while ((d->car = *ws++) && (wlen -= c_len) >= 0)

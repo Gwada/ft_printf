@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_nbr.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dlavaury <dlavaury@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/06 14:30:24 by dlavaury          #+#    #+#             */
-/*   Updated: 2018/01/10 11:39:08 by dlavaury         ###   ########.fr       */
+/*   Created: 2018/01/12 09:59:44 by dlavaury          #+#    #+#             */
+/*   Updated: 2018/01/12 13:23:07 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void			ft_itoa_p(t_data *d, long long n)
 	d->bd & ZERO && !(d->bd & PREC) ? d->prec = d->min_s : 0;
 	d->bd & ZERO && d->bd & PREC && d->bd & PREC ? (d->bd &= ~ZERO) : 0;
 	((n < 0 || d->bd & POS || d->bd & SPACE) && d->bd & ZERO) ? --d->prec : 0;
-	d->c_len = MAX(d->c_len, d->prec);
+	d->prec > d->c_len ? d->c_len = d->prec : 0;
 	(n < 0 || d->bd & POS || d->bd & SPACE) ? --d->min_s : 0;
 	if ((d->filler = d->min_s - d->c_len) < 0)
 		d->filler = 0;
@@ -91,14 +91,15 @@ void			ft_itoa_base_p(t_data *d, ULX2I n, int b)
 	(d->bd & ZERO && !(d->bd & PREC)) ? d->prec = d->min_s : 0;
 	d->bd & ZERO && d->bd & PREC ? (d->bd &= ~ZERO) : 0;
 	ext = d->c_len >= d->prec ? 0 : 1;
-	d->c_len = MAX(d->c_len, d->prec);
+	d->prec > d->c_len ? d->c_len = d->prec : 0;
 	d->bd & DIESE && b == 8 && !ext ? --d->min_s : 0;
 	d->bd & DIESE && b == 8 && !n && d->bd & PREC && !d->c_len ? ++d->c_len : 0;
 	d->bd & DIESE && b == 16 && !(d->bd & ZERO) ? d->min_s -= 2 : 0;
-	d->filler = MAX(0, d->min_s - d->c_len);
+	d->filler = d->min_s - d->c_len > 0 ? d->min_s - d->c_len : 0;
 	ft_filler(d, 0);
 	BASE8 ? ft_buffering(d, "0", 1) : 0;
-	BASE16 ? ft_buffering(d, VMAJ, 2) : 0;
+	if (BASE16)
+		ft_buffering(d, d->bd & MAJ ? "0X" : "0x", 2);
 	ft_itoa_buf(d, n, b, d->c_len);
 	ft_filler(d, 1);
 }

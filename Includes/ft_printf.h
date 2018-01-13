@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlavaury <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dlavaury <dlavaury@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/13 15:53:27 by dlavaury          #+#    #+#             */
-/*   Updated: 2018/01/11 23:01:24 by dlavaury         ###   ########.fr       */
+/*   Created: 2018/01/12 09:49:20 by dlavaury          #+#    #+#             */
+/*   Updated: 2018/01/12 13:24:00 by dlavaury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,12 @@
 ** *** TO REDUCE CODE ***
 */
 
-# define MAX(a, b)	b & ((a - b) >> 31) | a & (~(a - b) >> 31)
-# define MIN(a, b)	a & ((a - b) >> 31) | b & (~(a - b) >> 31)
 # define ULX2I		unsigned long long int
 # define ULI		unsigned long int
 # define USI		unsigned short int
 # define UC			unsigned char
 # define BASE8		(n || d->bd & POINTEUR) && d->bd & DIESE && b == 8 && !ext
 # define BASE16		(n || d->bd & POINTEUR) && d->bd & DIESE && b == 16
-# define VMAJ		d->bd & MAJ ? "0X" : "0x"
 
 /*
 ** *** COLORS ***
